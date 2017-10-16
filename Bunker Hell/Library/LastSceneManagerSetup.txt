@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/Bunker Hell.unity
-  isLoaded: 1
-  isActive: 1
