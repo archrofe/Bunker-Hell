@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 52ecf87a8f8e40246bb5f2918defd962
+timeCreated: 1508739970
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Dimitri Swank
+  fontNames:
+  - Dimitri Swank
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

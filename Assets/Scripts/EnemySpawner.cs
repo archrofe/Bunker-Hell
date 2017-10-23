@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] spawnPrefabs;
@@ -48,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
             randomPos.y = 1;
 
             // Set spawned object's position
-            clone.transform.position = randomPos;
+            clone.transform.position = randomPos;            
         }
     }
 
