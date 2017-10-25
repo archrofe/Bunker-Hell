@@ -3,17 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Tower : MonoBehaviour
+public class Tower1 : MonoBehaviour
 {
+    [Header("Attack & Enemies")]
     public Cannon cannon; // Reference to cannon inside tower
-    public float attackRate = 0.25f; // Rate of attack in world units
+    public float attackRate = 0.5f; // Rate of attack in world units
     public float attackRadius = 5f; // Distance of attack in world units
 
     private float attackTimer = 0f; // Timer to count up to attackRate
     private List<Enemy> enemies = new List<Enemy>(); // List of enemies whithin radius
 
+    [Header("Buttons")]
+    public GameObject bunker1Button;
+    public GameObject b1AttackRateButton;
 
+    // Use this for initialization
+    void Start()
+    {
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        attackTimer = attackTimer + Time.deltaTime;
+
+        if (attackTimer >= attackRate)
+        {
+            Attack();
+            attackTimer = 0;
+        }
+    }
+
+    #region Triggers, Enemies, & Attack
     void OnTriggerEnter(Collider col)
     {
         Enemy e = col.GetComponent<Enemy>();
@@ -78,22 +100,18 @@ public class Tower : MonoBehaviour
             cannon.Fire(closest);
         }
     }
+    #endregion
 
-    // Use this for initialization
-    void Start()
+    #region Buttons & Upgrades
+    public void Bunker1ButtonFunction()
     {
-
+        b1AttackRateButton.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void B1AttackRateButtonFunction()
     {
-        attackTimer = attackTimer + Time.deltaTime;
-
-        if (attackTimer >= attackRate)
-        {
-            Attack();
-            attackTimer = 0;
-        }
+        attackRate = attackRate / 2;
+        b1AttackRateButton.SetActive(false);
     }
+    #endregion
 }
