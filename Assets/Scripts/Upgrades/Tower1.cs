@@ -15,7 +15,16 @@ public class Tower1 : MonoBehaviour
 
     [Header("Buttons")]
     public GameObject bunker1Button;
-    public GameObject b1AttackRateButton;
+    public GameObject b1ShotgunBunker;
+    public GameObject shotgunCannon;
+    public GameObject b1SniperBunker;
+    public GameObject sniperCannon;
+    public GameObject b1TurretBunker;
+    public GameObject turretCannon;
+    public GameObject b1AccuracyButton;
+    public GameObject b1DamageButton;
+    public GameObject b1FireRateButton;
+    public GameObject b1RangeButton;
 
     // Use this for initialization
     void Start()
@@ -103,15 +112,52 @@ public class Tower1 : MonoBehaviour
     #endregion
 
     #region Buttons & Upgrades
+    public void Bunker1Classes()
+    {
+        b1SniperBunker.SetActive(true);
+        b1TurretBunker.SetActive(true);
+        b1ShotgunBunker.SetActive(true);
+    }
+
+    public void ShotgunBunker()
+    {
+        shotgunCannon.SetActive(true);
+        b1SniperBunker.SetActive(false);
+        b1TurretBunker.SetActive(false);
+        b1ShotgunBunker.SetActive(false);
+    }
+
+    public void SniperBunker()
+    {
+        sniperCannon.SetActive(true);
+        b1SniperBunker.SetActive(false);
+        b1TurretBunker.SetActive(false);
+        b1ShotgunBunker.SetActive(false);
+    }
+
+    public void TurretBunker()
+    {
+        turretCannon.SetActive(true);
+        b1SniperBunker.SetActive(false);
+        b1TurretBunker.SetActive(false);
+        b1ShotgunBunker.SetActive(false);
+    }
+
     public void Bunker1ButtonFunction()
     {
-        b1AttackRateButton.SetActive(true);
+        b1AccuracyButton.SetActive(true);
+        b1DamageButton.SetActive(true);
+        b1FireRateButton.SetActive(true);
+        b1RangeButton.SetActive(true);
     }
 
     public void B1AttackRateButtonFunction()
     {
         attackRate = attackRate / 2;
-        b1AttackRateButton.SetActive(false);
+        b1AccuracyButton.SetActive(false);
+        b1DamageButton.SetActive(false);
+        b1FireRateButton.SetActive(false);
+        b1RangeButton.SetActive(false);
     }
     #endregion
 }
