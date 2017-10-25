@@ -14,6 +14,7 @@ public class Tower1 : MonoBehaviour
     private List<Enemy> enemies = new List<Enemy>(); // List of enemies whithin radius
 
     [Header("Buttons")]
+    public GameObject bunkerUpgrades;
     public GameObject bunker1Button;
     public GameObject b1ShotgunBunker;
     public GameObject shotgunCannon;
@@ -122,6 +123,7 @@ public class Tower1 : MonoBehaviour
     public void ShotgunBunker()
     {
         shotgunCannon.SetActive(true);
+        bunkerUpgrades.SetActive(true);
         b1SniperBunker.SetActive(false);
         b1TurretBunker.SetActive(false);
         b1ShotgunBunker.SetActive(false);
@@ -130,6 +132,7 @@ public class Tower1 : MonoBehaviour
     public void SniperBunker()
     {
         sniperCannon.SetActive(true);
+        bunkerUpgrades.SetActive(true);
         b1SniperBunker.SetActive(false);
         b1TurretBunker.SetActive(false);
         b1ShotgunBunker.SetActive(false);
@@ -138,6 +141,7 @@ public class Tower1 : MonoBehaviour
     public void TurretBunker()
     {
         turretCannon.SetActive(true);
+        bunkerUpgrades.SetActive(true);
         b1SniperBunker.SetActive(false);
         b1TurretBunker.SetActive(false);
         b1ShotgunBunker.SetActive(false);
