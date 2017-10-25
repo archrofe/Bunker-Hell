@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gun"))
         {
-            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
         }
     }
 }
