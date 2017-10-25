@@ -36,12 +36,4 @@ public class Seek : SteeringBehaviour
         // return force
         return force;
     }
-
-    void OnCollision(Collision other)
-    {
-        if (other.gameObject.CompareTag("Bunker"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }

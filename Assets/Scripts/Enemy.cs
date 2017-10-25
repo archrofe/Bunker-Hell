@@ -28,5 +28,13 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Gun"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
 
