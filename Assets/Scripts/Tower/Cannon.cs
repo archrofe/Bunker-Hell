@@ -53,6 +53,9 @@ public class Cannon : MonoBehaviour
 
             Projectile p = clone.GetComponent<Projectile>();
 
+            DestroyOnLifeTime q = clone.GetComponent<DestroyOnLifeTime>();
+
+            // Damage Upgrades
             if (bunkerUI.GetComponent<Upgrades>().damageTech2 == true)
             {
                 if (bunkerUI.GetComponent<Upgrades>().damageTech3 == false)
@@ -63,6 +66,20 @@ public class Cannon : MonoBehaviour
                 if (bunkerUI.GetComponent<Upgrades>().damageTech3 == true)
                 {
                     p.damage = p.damage * 3f;
+                }
+            }
+
+            // Range Upgrades
+            if (bunkerUI.GetComponent<Upgrades>().rangeTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == false)
+                {
+                    q.lifeTime = q.lifeTime * 1.5f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == true)
+                {
+                    q.lifeTime = q.lifeTime * 2f;
                 }
             }
 
@@ -77,6 +94,9 @@ public class Cannon : MonoBehaviour
 
             Projectile p = clone.GetComponent<Projectile>();
 
+            DestroyOnLifeTime q = clone.GetComponent<DestroyOnLifeTime>();
+
+            // Damage Upgrades
             if (bunkerUI.GetComponent<Upgrades>().damageTech2 == true)
             {
                 if (bunkerUI.GetComponent<Upgrades>().damageTech3 == false)
@@ -87,6 +107,20 @@ public class Cannon : MonoBehaviour
                 if (bunkerUI.GetComponent<Upgrades>().damageTech3 == true)
                 {
                     p.damage = p.damage * 3f;
+                }
+            }
+
+            // Range Upgrades
+            if (bunkerUI.GetComponent<Upgrades>().rangeTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == false)
+                {
+                    q.lifeTime = q.lifeTime * 1.5f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == true)
+                {
+                    q.lifeTime = q.lifeTime * 2f;
                 }
             }
 
@@ -101,6 +135,9 @@ public class Cannon : MonoBehaviour
 
             Projectile p = clone.GetComponent<Projectile>();
 
+            DestroyOnLifeTime q = clone.GetComponent<DestroyOnLifeTime>();
+
+            // Damage Upgrades
             if (bunkerUI.GetComponent<Upgrades>().damageTech2 == true)
             {
                 if (bunkerUI.GetComponent<Upgrades>().damageTech3 == false)
@@ -111,6 +148,20 @@ public class Cannon : MonoBehaviour
                 if (bunkerUI.GetComponent<Upgrades>().damageTech3 == true)
                 {
                     p.damage = p.damage * 3f;
+                }
+            }
+
+            // Range Upgrades
+            if (bunkerUI.GetComponent<Upgrades>().rangeTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == false)
+                {
+                    q.lifeTime = q.lifeTime * 1.5f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == true)
+                {
+                    q.lifeTime = q.lifeTime * 2f;
                 }
             }
 
