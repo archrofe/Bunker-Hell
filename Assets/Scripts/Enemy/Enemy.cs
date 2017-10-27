@@ -6,11 +6,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    public float health = 100f; // Enemie's health which starts at 100
+    public float health = 100f; // Enemy's health which starts at 100
 
     public void DealDamage(float damage)
     {
-        float health = -damage;
+        health -= damage;
+
         if (health <= 0)
         {
             Destroy(gameObject);

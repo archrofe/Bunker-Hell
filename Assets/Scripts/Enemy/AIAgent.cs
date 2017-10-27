@@ -49,6 +49,7 @@ public class AIAgent : MonoBehaviour
         }
     }
 
+    #region Tower & Attack
     Tower GetClosestTower()
     {
         towers = RemoveAllNulls(towers);
@@ -99,4 +100,5 @@ public class AIAgent : MonoBehaviour
             closest = GetClosestTower();
         }
     }
+    #endregion
 }

@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float damage = 50f; // Damage dealt to whatever gets hit
+    public float damage = 35f; // Damage dealt to whatever gets hit
     public float speed = 50f; // Speed the projectile travels
     public Vector3 direction; // Direction the projectile travels
-                              // Use this for initialization
+    
+    // Use this for initialization
     void Start()
     {
 
@@ -29,6 +30,7 @@ public class Projectile : MonoBehaviour
         if (e != null)
         {
             e.DealDamage(damage);
+
             Destroy(gameObject);
         }
 

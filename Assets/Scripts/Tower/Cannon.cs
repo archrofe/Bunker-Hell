@@ -20,7 +20,9 @@ public class Cannon : MonoBehaviour
 
     void Start()
     {
-
+        bunkerIsShotgun = bunkerUI.GetComponent<Upgrades>().bunkerIsShotgun;
+        bunkerIsMachineGun = bunkerUI.GetComponent<Upgrades>().bunkerIsMachineGun;
+        bunkerIsSniper = bunkerUI.GetComponent<Upgrades>().bunkerIsSniper;
     }
 
     void Update()
@@ -28,6 +30,7 @@ public class Cannon : MonoBehaviour
 
     }
 
+    #region Fire & Projectile Instance
     public void Fire(Enemy targetEnemy)
     {
         Vector3 targetPos = targetEnemy.transform.position;
@@ -44,38 +47,78 @@ public class Cannon : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(fireDirection, Vector3.up);
 
-        if (bunkerUI.GetComponent<Upgrades>().bunkerIsShotgun == true)
+        if (bunkerIsShotgun == true)
         {
             GameObject clone = Instantiate(bulletTypes[2], barrelPos, barrelRot);
 
             Projectile p = clone.GetComponent<Projectile>();
 
+            if (bunkerUI.GetComponent<Upgrades>().damageTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().damageTech3 == false)
+                {
+                    p.damage = p.damage * 2f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().damageTech3 == true)
+                {
+                    p.damage = p.damage * 3f;
+                }
+            }
+
             p.direction = fireDirection;
 
             return;
         }
 
-        if (bunkerUI.GetComponent<Upgrades>().bunkerIsMachineGun == true)
+        if (bunkerIsMachineGun == true)
         {
             GameObject clone = Instantiate(bulletTypes[0], barrelPos, barrelRot);
 
             Projectile p = clone.GetComponent<Projectile>();
 
+            if (bunkerUI.GetComponent<Upgrades>().damageTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().damageTech3 == false)
+                {
+                    p.damage = p.damage * 2f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().damageTech3 == true)
+                {
+                    p.damage = p.damage * 3f;
+                }
+            }
+
             p.direction = fireDirection;
 
             return;
         }
 
-        if (bunkerUI.GetComponent<Upgrades>().bunkerIsSniper == true)
+        if (bunkerIsSniper == true)
         {
             GameObject clone = Instantiate(bulletTypes[1], barrelPos, barrelRot);
 
             Projectile p = clone.GetComponent<Projectile>();
+
+            if (bunkerUI.GetComponent<Upgrades>().damageTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().damageTech3 == false)
+                {
+                    p.damage = p.damage * 2f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().damageTech3 == true)
+                {
+                    p.damage = p.damage * 3f;
+                }
+            }
 
             p.direction = fireDirection;
 
             return;
         }
     }
+    #endregion
 }
 
