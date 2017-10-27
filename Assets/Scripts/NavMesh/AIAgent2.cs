@@ -11,7 +11,7 @@ public class AIAgent2 : MonoBehaviour
 
     private NavMeshAgent nav;
 
-    private List<Tower1> towers = new List<Tower1>();
+    private List<Tower> towers = new List<Tower>();
 
 
     void Awake()
@@ -31,7 +31,7 @@ public class AIAgent2 : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        Tower1 tower = col.GetComponent<Tower1>();
+        Tower tower = col.GetComponent<Tower>();
 
         if (tower != null)
         {
@@ -41,7 +41,7 @@ public class AIAgent2 : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        Tower1 tower = col.GetComponent<Tower1>();
+        Tower tower = col.GetComponent<Tower>();
 
         if (tower != null)
         {
@@ -49,11 +49,11 @@ public class AIAgent2 : MonoBehaviour
         }
     }
 
-    Tower1 GetClosestTower()
+    Tower GetClosestTower()
     {
         towers = RemoveAllNulls(towers);
 
-        Tower1 closest = null;
+        Tower closest = null;
 
         float minDistance = float.MaxValue;
 
@@ -69,11 +69,11 @@ public class AIAgent2 : MonoBehaviour
         return closest;
     }
 
-    List<Tower1> RemoveAllNulls(List<Tower1> listWithNulls)
+    List<Tower> RemoveAllNulls(List<Tower> listWithNulls)
     {
-        List<Tower1> listWithoutNulls = new List<Tower1>();
+        List<Tower> listWithoutNulls = new List<Tower>();
 
-        foreach (Tower1 closest in listWithNulls)
+        foreach (Tower closest in listWithNulls)
         {
             if (closest != null)
             {
@@ -86,7 +86,7 @@ public class AIAgent2 : MonoBehaviour
 
     void AttackTarget()
     {
-        Tower1 closest = GetClosestTower();
+        Tower closest = GetClosestTower();
 
         if (closest != null)
         {

@@ -6,13 +6,29 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public Cannon cannon; // Reference to cannon inside tower
-    public float attackRate = 0.25f; // Rate of attack in world units
+    public float attackRate = 0.5f; // Rate of attack in world units
     public float attackRadius = 5f; // Distance of attack in world units
 
     private float attackTimer = 0f; // Timer to count up to attackRate
     private List<Enemy> enemies = new List<Enemy>(); // List of enemies whithin radius
 
+    // Use this for initialization
+    void Start()
+    {
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        attackTimer = attackTimer + Time.deltaTime;
+
+        if (attackTimer >= attackRate)
+        {
+            Attack();
+            attackTimer = 0;
+        }
+    }
 
     void OnTriggerEnter(Collider col)
     {
@@ -34,6 +50,7 @@ public class Tower : MonoBehaviour
         }
     }
 
+    #region Enemy & Attack
     Enemy GetClosestEnemy()
     {
         enemies = RemoveAllNulls(enemies);
@@ -78,22 +95,5 @@ public class Tower : MonoBehaviour
             cannon.Fire(closest);
         }
     }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        attackTimer = attackTimer + Time.deltaTime;
-
-        if (attackTimer >= attackRate)
-        {
-            Attack();
-            attackTimer = 0;
-        }
-    }
+    #endregion
 }
