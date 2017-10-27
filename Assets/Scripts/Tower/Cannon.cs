@@ -17,12 +17,12 @@ public class Cannon : MonoBehaviour
     {
         bunkerIsSniper = Upgrades.bunkerIsSniper;
         bunkerIsShotgun = Upgrades.bunkerIsShotgun;
-        bunkerIsMachineGun = Upgrades.bunkerIsMachineGun;
+        
     }
 
     void Update()
     {
-
+        bunkerIsMachineGun = Upgrades.bunkerIsMachineGun;
     }
 
     public void Fire(Enemy targetEnemy)
