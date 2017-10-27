@@ -6,20 +6,21 @@ using UnityEngine.UI;
 public class Upgrades : MonoBehaviour
 {
     [Header("Menu & Class Buttons")]
+    public GameObject bunkerUI;
     public GameObject bunkerActivateButton;
     public GameObject bunkerClassMenu;
     public GameObject bunkerUpgradeMenu;
     public bool bunkerIsActive;
     public GameObject shotgunClassButton;
-    public GameObject sniperClassButton;
     public GameObject machineGunClassButton;
+    public GameObject sniperClassButton;
 
     [Header("Class Cannon/Gun GameObjects")]
     public GameObject bunkerGameObject;
     public GameObject bunkerCannon;
     public static bool bunkerIsShotgun;
-    public static bool bunkerIsSniper;
     public static bool bunkerIsMachineGun;
+    public static bool bunkerIsSniper;
 
     [Header("Fire Rate Variable")]
     public float shotgunFireRate = 1f;
@@ -51,10 +52,18 @@ public class Upgrades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        BunkerIsAliveCheck();
     }
 
     #region Buttons & Upgrades
+    public void BunkerIsAliveCheck()
+    {
+        if(bunkerGameObject == null)
+        {
+            bunkerUI.SetActive(false);
+        }
+    }
+
     public void BunkerActivateFunction()
     {
         bunkerActivateButton.SetActive(false);
@@ -78,7 +87,6 @@ public class Upgrades : MonoBehaviour
     public void ShotgunButtonFunction()
     {
         bunkerClassMenu.SetActive(false);
-        bunkerGameObject.SetActive(true);
         bunkerUpgradeMenu.SetActive(true);
         
         bunkerCannon.SetActive(true);
@@ -91,7 +99,6 @@ public class Upgrades : MonoBehaviour
     public void SniperButtonFunction()
     {
         bunkerClassMenu.SetActive(false);
-        bunkerGameObject.SetActive(true);
         bunkerUpgradeMenu.SetActive(true);
 
         bunkerCannon.SetActive(true);
@@ -104,7 +111,6 @@ public class Upgrades : MonoBehaviour
     public void MachineGunButtonFunction()
     {
         bunkerClassMenu.SetActive(false);
-        bunkerGameObject.SetActive(true);
         bunkerUpgradeMenu.SetActive(true);
 
         bunkerCannon.SetActive(true);

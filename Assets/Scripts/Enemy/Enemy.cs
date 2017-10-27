@@ -31,9 +31,9 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Gun"))
+        if (other.gameObject.CompareTag("Base"))
         {
-            Destroy(other.gameObject);
+            Destroy(other.transform.parent.gameObject);
         }
     }
 }
