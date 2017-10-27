@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class AIAgent2 : MonoBehaviour
+public class AIAgent : MonoBehaviour
 {
     public Transform navTarget;
 

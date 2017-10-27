@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public Cannon cannon; // Reference to cannon inside tower
+    public Cannon cannon; // Reference to Cannon inside Tower
     public float attackRate = 0.5f; // Rate of attack in world units
     public float attackRadius = 5f; // Distance of attack in world units
 
@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame

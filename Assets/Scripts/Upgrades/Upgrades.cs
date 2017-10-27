@@ -16,9 +16,15 @@ public class Upgrades : MonoBehaviour
 
     [Header("Class Cannon/Gun GameObjects")]
     public GameObject bunkerGameObject;
-    public GameObject shotgunCannon;
-    public GameObject sniperCannon;
-    public GameObject machineGunCannon;
+    public GameObject bunkerCannon;
+    public static bool bunkerIsShotgun;
+    public static bool bunkerIsSniper;
+    public static bool bunkerIsMachineGun;
+
+    [Header("Fire Rate Variable")]
+    public float shotgunFireRate = 1f;
+    public float sniperFireRate = 2f;
+    public float machineGunFireRate = 0.5f;
 
     [Header("Variables Buttons")]
     public GameObject fireRateButton;
@@ -28,14 +34,18 @@ public class Upgrades : MonoBehaviour
 
     [Header("Scripts")]
     private Tower bunkerTowerScript;
-
+    
 
 
     // Use this for initialization
     void Start()
     {
         bunkerTowerScript = bunkerGameObject.GetComponent<Tower>();
+
         bunkerIsActive = false;
+        bunkerIsShotgun = false;
+        bunkerIsSniper = false;
+        bunkerIsMachineGun = false;
     }
 
     // Update is called once per frame
@@ -69,8 +79,39 @@ public class Upgrades : MonoBehaviour
     {
         bunkerClassMenu.SetActive(false);
         bunkerGameObject.SetActive(true);
-        shotgunCannon.SetActive(true);
         bunkerUpgradeMenu.SetActive(true);
+        
+        bunkerCannon.SetActive(true);
+
+        bunkerTowerScript.attackRate = shotgunFireRate;
+
+        bunkerIsShotgun = true;
+    }
+
+    public void SniperButtonFunction()
+    {
+        bunkerClassMenu.SetActive(false);
+        bunkerGameObject.SetActive(true);
+        bunkerUpgradeMenu.SetActive(true);
+
+        bunkerCannon.SetActive(true);
+
+        bunkerTowerScript.attackRate = sniperFireRate;
+
+        bunkerIsSniper = true;
+    }
+
+    public void MachineGunButtonFunction()
+    {
+        bunkerClassMenu.SetActive(false);
+        bunkerGameObject.SetActive(true);
+        bunkerUpgradeMenu.SetActive(true);
+
+        bunkerCannon.SetActive(true);
+
+        bunkerTowerScript.attackRate = machineGunFireRate;
+
+        bunkerIsMachineGun = true;
     }
 
     public void BunkerUpgradesMenuFunction()
