@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
-    [Header("Menu & Class Buttons")]
+    [Header("Menu Buttons")]
     public GameObject bunkerUI;
     public GameObject bunkerActivateButton;
     public GameObject bunkerClassMenu;
     public GameObject bunkerUpgradeMenu;
     public bool bunkerIsActive;
+
+    [Header("Class Buttons")]
     public GameObject shotgunClassButton;
     public GameObject machineGunClassButton;
     public GameObject sniperClassButton;
@@ -18,9 +20,9 @@ public class Upgrades : MonoBehaviour
     [Header("Class Cannon/Gun GameObjects")]
     public GameObject bunkerGameObject;
     public GameObject bunkerCannon;
-    public static bool bunkerIsShotgun;
-    public static bool bunkerIsMachineGun;
-    public static bool bunkerIsSniper;
+    public bool bunkerIsShotgun;
+    public bool bunkerIsMachineGun;
+    public bool bunkerIsSniper;
 
     [Header("Fire Rate Variable")]
     public float shotgunFireRate = 1f;
@@ -91,7 +93,7 @@ public class Upgrades : MonoBehaviour
         
         bunkerCannon.SetActive(true);
 
-        bunkerTowerScript.attackRate = shotgunFireRate;
+        //bunkerTowerScript.attackRate = shotgunFireRate;
 
         bunkerIsShotgun = true;
     }
@@ -103,7 +105,7 @@ public class Upgrades : MonoBehaviour
 
         bunkerCannon.SetActive(true);
 
-        bunkerTowerScript.attackRate = sniperFireRate;
+        //bunkerTowerScript.attackRate = sniperFireRate;
 
         bunkerIsSniper = true;
     }
@@ -115,7 +117,7 @@ public class Upgrades : MonoBehaviour
 
         bunkerCannon.SetActive(true);
 
-        bunkerTowerScript.attackRate = machineGunFireRate;
+        //bunkerTowerScript.attackRate = machineGunFireRate;
 
         bunkerIsMachineGun = true;
     }

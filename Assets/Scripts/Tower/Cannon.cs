@@ -7,22 +7,25 @@ public class Cannon : MonoBehaviour
 {
     public Transform barrel; // Reference to Barrel where bullet will be shot from
 
-    public bool bunkerIsSniper;
+    public GameObject bunkerUI;
+
     public bool bunkerIsShotgun;
     public bool bunkerIsMachineGun;
+    public bool bunkerIsSniper;
 
     public GameObject[] bulletTypes = null;
 
+    //public int offsetShotgun = 15;
+    //public float shotgunDelay = 0.25f;
+
     void Start()
     {
-        bunkerIsSniper = Upgrades.bunkerIsSniper;
-        bunkerIsShotgun = Upgrades.bunkerIsShotgun;
-        
+
     }
 
     void Update()
     {
-        bunkerIsMachineGun = Upgrades.bunkerIsMachineGun;
+
     }
 
     public void Fire(Enemy targetEnemy)
@@ -32,11 +35,18 @@ public class Cannon : MonoBehaviour
         Quaternion barrelRot = barrel.rotation;
         Vector3 fireDirection = targetPos - barrelPos;
 
+        // Testing Offset for Multiple Shotgun Bullets fired at once
+        /*Vector3 targetPosPlus = new Vector3(targetEnemy.transform.position.x + offsetShotgun, targetEnemy.transform.position.y, targetEnemy.transform.position.z + offsetShotgun);
+        Vector3 fireDirectionPlus = targetPosPlus - barrelPos;
+
+        Vector3 targetPosMinus = new Vector3(targetEnemy.transform.position.x - offsetShotgun, targetEnemy.transform.position.y, targetEnemy.transform.position.z - offsetShotgun);
+        Vector3 fireDirectionMinus = targetPosMinus - barrelPos;*/
+
         transform.rotation = Quaternion.LookRotation(fireDirection, Vector3.up);
 
-        if(bunkerIsSniper == true)
+        if (bunkerUI.GetComponent<Upgrades>().bunkerIsShotgun == true)
         {
-            GameObject clone = Instantiate(bulletTypes[1], barrelPos, barrelRot);
+            GameObject clone = Instantiate(bulletTypes[2], barrelPos, barrelRot);
 
             Projectile p = clone.GetComponent<Projectile>();
 
@@ -45,7 +55,7 @@ public class Cannon : MonoBehaviour
             return;
         }
 
-        if (bunkerIsMachineGun == true)
+        if (bunkerUI.GetComponent<Upgrades>().bunkerIsMachineGun == true)
         {
             GameObject clone = Instantiate(bulletTypes[0], barrelPos, barrelRot);
 
@@ -56,9 +66,9 @@ public class Cannon : MonoBehaviour
             return;
         }
 
-        if (bunkerIsShotgun == true)
+        if (bunkerUI.GetComponent<Upgrades>().bunkerIsSniper == true)
         {
-            GameObject clone = Instantiate(bulletTypes[2], barrelPos, barrelRot);
+            GameObject clone = Instantiate(bulletTypes[1], barrelPos, barrelRot);
 
             Projectile p = clone.GetComponent<Projectile>();
 
