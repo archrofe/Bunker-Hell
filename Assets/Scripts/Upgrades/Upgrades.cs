@@ -217,7 +217,7 @@ public class Upgrades : MonoBehaviour
 
         if (fireRateTech2 == true && fireRateTech3 == false)
         {
-            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate * 0.75f;
+            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate / 1.5f;
             fireRateTech3 = true;
             return;
         }
