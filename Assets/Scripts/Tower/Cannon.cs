@@ -91,11 +91,13 @@ public class Cannon : MonoBehaviour
                 if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == false)
                 {
                     p.speed = p.speed * 2f;
+                    q.lifeTime = q.lifeTime * 0.5f;
                 }
 
                 if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == true)
                 {
                     p.speed = p.speed * 3f;
+                    q.lifeTime = q.lifeTime * 0.35f;
                 }
             }
 
@@ -148,11 +150,13 @@ public class Cannon : MonoBehaviour
                 if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == false)
                 {
                     p.speed = p.speed * 2f;
+                    q.lifeTime = q.lifeTime * 0.5f;
                 }
 
                 if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == true)
                 {
                     p.speed = p.speed * 3f;
+                    q.lifeTime = q.lifeTime * 0.35f;
                 }
             }
 
@@ -205,11 +209,13 @@ public class Cannon : MonoBehaviour
                 if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == false)
                 {
                     p.speed = p.speed * 2f;
+                    q.lifeTime = q.lifeTime * 0.5f;
                 }
 
                 if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == true)
                 {
                     p.speed = p.speed * 3f;
+                    q.lifeTime = q.lifeTime * 0.35f;
                 }
             }
 
