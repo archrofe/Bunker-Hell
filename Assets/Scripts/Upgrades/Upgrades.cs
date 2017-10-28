@@ -12,6 +12,13 @@ public class Upgrades : MonoBehaviour
     public GameObject bunkerUpgradeMenu;
     public bool bunkerIsActive;
 
+    [Header("Other Bunker UI")]
+    public GameObject otherBunkerUI1;
+    public GameObject otherBunkerUI2;
+    public GameObject otherBunkerUI3;
+    public GameObject otherBunkerUI4;
+    public GameObject otherBunkerUI5;
+
     [Header("Class Buttons")]
     public GameObject shotgunClassButton;
     public GameObject machineGunClassButton;
@@ -27,10 +34,14 @@ public class Upgrades : MonoBehaviour
     public bool bunkerTech3;
 
     [Header("Variables")]
+    public bool fireRateTech2;
+    public bool fireRateTech3;
     public bool damageTech2;
     public bool damageTech3;
     public bool rangeTech2;
     public bool rangeTech3;
+    public bool accuracyTech2;
+    public bool accuracyTech3;
 
     [Header("Variables Buttons")]
     public GameObject fireRateButton;
@@ -56,11 +67,17 @@ public class Upgrades : MonoBehaviour
         bunkerTech2 = false;
         bunkerTech3 = false;
 
+        fireRateTech2 = false;
+        fireRateTech3 = false;
+
         damageTech2 = false;
         damageTech3 = false;
 
         rangeTech2 = false;
         rangeTech3 = false;
+
+        accuracyTech2 = false;
+        accuracyTech3 = false;
     }
 
     // Update is called once per frame
@@ -80,8 +97,21 @@ public class Upgrades : MonoBehaviour
 
     public void BunkerActivateFunction()
     {
-        bunkerActivateButton.SetActive(false);
-        bunkerClassMenu.SetActive(true);
+        if(bunkerActivateButton.activeSelf == true && bunkerClassMenu.activeSelf == false)
+        {
+            bunkerActivateButton.SetActive(false);
+            bunkerClassMenu.SetActive(true);
+            return;
+        }
+
+        if (bunkerActivateButton.activeSelf == false && bunkerClassMenu.activeSelf == true)
+        {
+            bunkerActivateButton.SetActive(true);
+            bunkerClassMenu.SetActive(false);
+            return;
+        }
+
+        
     }
 
     public void BunkerClassesMenuFunction()
@@ -132,29 +162,65 @@ public class Upgrades : MonoBehaviour
     #region UI Upgrades & Variables Menu
     public void BunkerUpgradesMenuFunction()
     {
-        if (fireRateButton.activeSelf == true && damageButton.activeSelf == true && rangeButton.activeSelf == true)
+        if (fireRateButton.activeSelf == true && damageButton.activeSelf == true && rangeButton.activeSelf == true && accuracyButton.activeSelf == true)
         {
             fireRateButton.SetActive(false);
             damageButton.SetActive(false);
             rangeButton.SetActive(false);
+            accuracyButton.SetActive(false);
+
+            otherBunkerUI1.SetActive(true);
+            otherBunkerUI2.SetActive(true);
+            otherBunkerUI3.SetActive(true);
+            otherBunkerUI4.SetActive(true);
+            otherBunkerUI5.SetActive(true);
+
             return;
         }
 
-        if (fireRateButton.activeSelf == false && damageButton.activeSelf == false && rangeButton.activeSelf == false)
+        if (fireRateButton.activeSelf == false && damageButton.activeSelf == false && rangeButton.activeSelf == false && accuracyButton.activeSelf == false)
         {
             fireRateButton.SetActive(true);
             damageButton.SetActive(true);
             rangeButton.SetActive(true);
+            accuracyButton.SetActive(true);
+
+            otherBunkerUI1.SetActive(false);
+            otherBunkerUI2.SetActive(false);
+            otherBunkerUI3.SetActive(false);
+            otherBunkerUI4.SetActive(false);
+            otherBunkerUI5.SetActive(false);
+
             return;
         }
     }
 
     public void AttackRateButtonFunction()
     {
-        bunkerTowerScript.attackRate = bunkerTowerScript.attackRate * 0.75f;
         fireRateButton.SetActive(false);
         damageButton.SetActive(false);
         rangeButton.SetActive(false);
+        accuracyButton.SetActive(false);
+
+        otherBunkerUI1.SetActive(true);
+        otherBunkerUI2.SetActive(true);
+        otherBunkerUI3.SetActive(true);
+        otherBunkerUI4.SetActive(true);
+        otherBunkerUI5.SetActive(true);
+
+        if (fireRateTech2 == false)
+        {
+            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate * 0.75f;
+            fireRateTech2 = true;
+            return;
+        }
+
+        if (fireRateTech2 == true && fireRateTech3 == false)
+        {
+            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate * 0.75f;
+            fireRateTech3 = true;
+            return;
+        }
     }
 
     public void DamageButtonFunction()
@@ -162,6 +228,13 @@ public class Upgrades : MonoBehaviour
         fireRateButton.SetActive(false);
         damageButton.SetActive(false);
         rangeButton.SetActive(false);
+        accuracyButton.SetActive(false);
+
+        otherBunkerUI1.SetActive(true);
+        otherBunkerUI2.SetActive(true);
+        otherBunkerUI3.SetActive(true);
+        otherBunkerUI4.SetActive(true);
+        otherBunkerUI5.SetActive(true);
 
         if (damageTech2 == false)
         {
@@ -181,6 +254,13 @@ public class Upgrades : MonoBehaviour
         fireRateButton.SetActive(false);
         damageButton.SetActive(false);
         rangeButton.SetActive(false);
+        accuracyButton.SetActive(false);
+
+        otherBunkerUI1.SetActive(true);
+        otherBunkerUI2.SetActive(true);
+        otherBunkerUI3.SetActive(true);
+        otherBunkerUI4.SetActive(true);
+        otherBunkerUI5.SetActive(true);
 
         if (rangeTech2 == false)
         {
@@ -191,6 +271,32 @@ public class Upgrades : MonoBehaviour
         if (rangeTech2 == true && rangeTech3 == false)
         {
             rangeTech3 = true;
+            return;
+        }
+    }
+
+    public void AccuracyButtonFunction()
+    {
+        fireRateButton.SetActive(false);
+        damageButton.SetActive(false);
+        rangeButton.SetActive(false);
+        accuracyButton.SetActive(false);
+
+        otherBunkerUI1.SetActive(true);
+        otherBunkerUI2.SetActive(true);
+        otherBunkerUI3.SetActive(true);
+        otherBunkerUI4.SetActive(true);
+        otherBunkerUI5.SetActive(true);
+
+        if (accuracyTech2 == false)
+        {
+            accuracyTech2 = true;
+            return;
+        }
+
+        if (accuracyTech2 == true && accuracyTech3 == false)
+        {
+            accuracyTech3 = true;
             return;
         }
     }

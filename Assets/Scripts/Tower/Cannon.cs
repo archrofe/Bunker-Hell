@@ -15,6 +15,7 @@ public class Cannon : MonoBehaviour
 
     public GameObject[] bulletTypes = null;
 
+    // Testing for Offset below
     //public int offsetShotgun = 15;
     //public float shotgunDelay = 0.25f;
 
@@ -38,7 +39,7 @@ public class Cannon : MonoBehaviour
         Quaternion barrelRot = barrel.rotation;
         Vector3 fireDirection = targetPos - barrelPos;
 
-        // Testing Offset for Multiple Shotgun Bullets fired at once
+        // Testing Offset for Multiple Shotgun Bullets fired at once AND/OR Accuracy
         /*Vector3 targetPosPlus = new Vector3(targetEnemy.transform.position.x + offsetShotgun, targetEnemy.transform.position.y, targetEnemy.transform.position.z + offsetShotgun);
         Vector3 fireDirectionPlus = targetPosPlus - barrelPos;
 
@@ -47,6 +48,7 @@ public class Cannon : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(fireDirection, Vector3.up);
 
+        #region Shotgun & Upgrades
         if (bunkerIsShotgun == true)
         {
             GameObject clone = Instantiate(bulletTypes[2], barrelPos, barrelRot);
@@ -83,11 +85,27 @@ public class Cannon : MonoBehaviour
                 }
             }
 
+            // Accuracy Upgrades
+            if (bunkerUI.GetComponent<Upgrades>().accuracyTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == false)
+                {
+                    p.speed = p.speed * 2f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == true)
+                {
+                    p.speed = p.speed * 3f;
+                }
+            }
+
             p.direction = fireDirection;
 
             return;
         }
+        #endregion
 
+        #region Machine Gun & Upgrades
         if (bunkerIsMachineGun == true)
         {
             GameObject clone = Instantiate(bulletTypes[0], barrelPos, barrelRot);
@@ -124,11 +142,27 @@ public class Cannon : MonoBehaviour
                 }
             }
 
+            // Accuracy Upgrades
+            if (bunkerUI.GetComponent<Upgrades>().accuracyTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == false)
+                {
+                    p.speed = p.speed * 2f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == true)
+                {
+                    p.speed = p.speed * 3f;
+                }
+            }
+
             p.direction = fireDirection;
 
             return;
         }
+        #endregion
 
+        #region Sniper & Upgrades
         if (bunkerIsSniper == true)
         {
             GameObject clone = Instantiate(bulletTypes[1], barrelPos, barrelRot);
@@ -165,10 +199,25 @@ public class Cannon : MonoBehaviour
                 }
             }
 
+            // Accuracy Upgrades
+            if (bunkerUI.GetComponent<Upgrades>().accuracyTech2 == true)
+            {
+                if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == false)
+                {
+                    p.speed = p.speed * 2f;
+                }
+
+                if (bunkerUI.GetComponent<Upgrades>().accuracyTech3 == true)
+                {
+                    p.speed = p.speed * 3f;
+                }
+            }
+
             p.direction = fireDirection;
 
             return;
         }
+        #endregion
     }
     #endregion
 }
