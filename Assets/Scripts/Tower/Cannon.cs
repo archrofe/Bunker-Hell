@@ -76,12 +76,12 @@ public class Cannon : MonoBehaviour
             {
                 if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == false)
                 {
-                    q.lifeTime = q.lifeTime * 1.5f;
+                    q.lifeTime = q.lifeTime * 1.25f;
                 }
 
                 if (bunkerUI.GetComponent<Upgrades>().rangeTech3 == true)
                 {
-                    q.lifeTime = q.lifeTime * 2f;
+                    q.lifeTime = q.lifeTime * 1.5f;
                 }
             }
 
