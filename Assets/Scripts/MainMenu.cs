@@ -53,6 +53,7 @@ public class MainMenu : MonoBehaviour
 
     public void Awake()
     {
+        Time.timeScale = 1;
         music = GetComponent<AudioSource>();
         if (musicPlay)
         {

@@ -1,0 +1,47 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro 4000 (ID=0x6dd)
+    Vendor:   NVIDIA
+    VRAM:     1968 MB
+    Driver:   10.18.13.5330
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\GizmosGL.dll (this message is harmless)
+Loading C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\GizmosGL.dll into Unity Child Domain
+- Completed reload, in  0.188 seconds
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\archer.rofe1\Source\Repos\Bunker-Hell\Build_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1200 59Hz; virtual: 1920x1200 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.835027 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 1760 -> priority: 1 
+  Thread -> id: 19e4 -> priority: 1 
+  Thread -> id: 1534 -> priority: 1 
+  Thread -> id: 202c -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 7.369255 ms
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 1644.
+Total: 1.357702 ms (FindLiveObjects: 0.062772 ms CreateObjectMapping: 0.045401 ms MarkObjects: 1.034364 ms  DeleteObjects: 0.214374 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.433177 ms
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 861.
+Total: 1.573655 ms (FindLiveObjects: 0.079748 ms CreateObjectMapping: 0.062772 ms MarkObjects: 1.132273 ms  DeleteObjects: 0.296886 ms)
+
