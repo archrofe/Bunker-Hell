@@ -135,6 +135,8 @@ public class Upgrades : MonoBehaviour
 
         bunkerCannon.SetActive(true);
 
+        bunkerTowerScript.attackRate = 0.6f;
+
         bunkerIsShotgun = true;
     }
 
@@ -144,6 +146,8 @@ public class Upgrades : MonoBehaviour
         bunkerUpgradeMenu.SetActive(true);
 
         bunkerCannon.SetActive(true);
+
+        bunkerTowerScript.attackRate = 0.8f;
 
         bunkerIsSniper = true;
     }
@@ -155,6 +159,8 @@ public class Upgrades : MonoBehaviour
 
         bunkerCannon.SetActive(true);
 
+        bunkerTowerScript.attackRate = 0.4f;
+
         bunkerIsMachineGun = true;
     }
     #endregion
@@ -162,12 +168,12 @@ public class Upgrades : MonoBehaviour
     #region UI Upgrades & Variables Menu
     public void BunkerUpgradesMenuFunction()
     {
-        if (fireRateButton.activeSelf == true && damageButton.activeSelf == true && rangeButton.activeSelf == true && accuracyButton.activeSelf == true)
+        if (fireRateButton.activeSelf == true && damageButton.activeSelf == true && rangeButton.activeSelf == true /*&& accuracyButton.activeSelf == true*/)
         {
             fireRateButton.SetActive(false);
             damageButton.SetActive(false);
             rangeButton.SetActive(false);
-            accuracyButton.SetActive(false);
+            //accuracyButton.SetActive(false);
 
             otherBunkerUI1.SetActive(true);
             otherBunkerUI2.SetActive(true);
@@ -178,12 +184,12 @@ public class Upgrades : MonoBehaviour
             return;
         }
 
-        if (fireRateButton.activeSelf == false && damageButton.activeSelf == false && rangeButton.activeSelf == false && accuracyButton.activeSelf == false)
+        if (fireRateButton.activeSelf == false && damageButton.activeSelf == false && rangeButton.activeSelf == false /*&& accuracyButton.activeSelf == false*/)
         {
             fireRateButton.SetActive(true);
             damageButton.SetActive(true);
             rangeButton.SetActive(true);
-            accuracyButton.SetActive(true);
+            //accuracyButton.SetActive(true);
 
             otherBunkerUI1.SetActive(false);
             otherBunkerUI2.SetActive(false);
@@ -200,7 +206,7 @@ public class Upgrades : MonoBehaviour
         fireRateButton.SetActive(false);
         damageButton.SetActive(false);
         rangeButton.SetActive(false);
-        accuracyButton.SetActive(false);
+        //accuracyButton.SetActive(false);
 
         otherBunkerUI1.SetActive(true);
         otherBunkerUI2.SetActive(true);
@@ -210,14 +216,14 @@ public class Upgrades : MonoBehaviour
 
         if (fireRateTech2 == false)
         {
-            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate * 0.75f;
+            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate - 0.1f;
             fireRateTech2 = true;
             return;
         }
 
         if (fireRateTech2 == true && fireRateTech3 == false)
         {
-            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate / 1.5f;
+            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate - 0.1f;
             fireRateTech3 = true;
             return;
         }
@@ -228,7 +234,7 @@ public class Upgrades : MonoBehaviour
         fireRateButton.SetActive(false);
         damageButton.SetActive(false);
         rangeButton.SetActive(false);
-        accuracyButton.SetActive(false);
+        //accuracyButton.SetActive(false);
 
         otherBunkerUI1.SetActive(true);
         otherBunkerUI2.SetActive(true);
@@ -254,7 +260,7 @@ public class Upgrades : MonoBehaviour
         fireRateButton.SetActive(false);
         damageButton.SetActive(false);
         rangeButton.SetActive(false);
-        accuracyButton.SetActive(false);
+        //accuracyButton.SetActive(false);
 
         otherBunkerUI1.SetActive(true);
         otherBunkerUI2.SetActive(true);
@@ -280,7 +286,7 @@ public class Upgrades : MonoBehaviour
         fireRateButton.SetActive(false);
         damageButton.SetActive(false);
         rangeButton.SetActive(false);
-        accuracyButton.SetActive(false);
+        //accuracyButton.SetActive(false);
 
         otherBunkerUI1.SetActive(true);
         otherBunkerUI2.SetActive(true);
