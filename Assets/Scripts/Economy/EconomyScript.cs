@@ -9,7 +9,7 @@ public class EconomyScript : MonoBehaviour
     public float timer;
     public Text theTime;
     public Text gold;
-    public float moneys;
+    public static float moneys;
     public int totalGold;
     public static float enemyHealth;
 
