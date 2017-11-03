@@ -32,7 +32,7 @@ public class EconomyScript : MonoBehaviour
 
         totalGold = Mathf.RoundToInt(moneys);
 
-        moneys = moneys + 1 * Time.deltaTime;
+       // moneys = moneys + 5 * Time.deltaTime;
 
         timer = timer + 1 * Time.deltaTime;
 
