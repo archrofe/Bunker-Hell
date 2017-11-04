@@ -6,41 +6,31 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    
-    public static float health = 100f; // Enemy's health which starts at 100
-    public int enemyPoints = 50;
+    public float health = 100f; // Enemy's health which starts at 100
 
-    public Text gold;
+    public float killPoints = 100;
 
     public void DealDamage(float damage)
     {
-        health -= damage;       
+        health -= damage;
 
         if (health <= 0)
         {
-            KillCounter.killCount = KillCounter.killCount + 1;
-            
-
-            EconomyScript.moneys = EconomyScript.moneys + enemyPoints;
-            
-
+            EconomyScript.moneys = EconomyScript.moneys + killPoints;
             Destroy(gameObject);
         }
     }
+
     void Awake()
     {
         
-        
     }
-    // Use this for initialization
+
     void Start()
     {
         
-    }
+    }   
 
-   
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -50,9 +40,14 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Base"))
         {
-            
             Destroy(other.transform.parent.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            
+        }
+
     }
 
     

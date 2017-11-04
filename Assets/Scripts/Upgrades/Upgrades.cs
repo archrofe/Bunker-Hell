@@ -8,76 +8,63 @@ public class Upgrades : MonoBehaviour
     [Header("Menu Buttons")]
     public GameObject bunkerUI;
     public GameObject bunkerActivateButton;
-    public GameObject bunkerClassMenu;
+    public GameObject bunkerActivateMenu;
+    public float activateCost = 150f;
+    public GameObject bunkerStatsMenu;
     public GameObject bunkerUpgradeMenu;
     public bool bunkerIsActive;
+    public int upgradeLimit;
 
-    [Header("Other Bunker UI")]
-    public GameObject otherBunkerUI1;
-    public GameObject otherBunkerUI2;
-    public GameObject otherBunkerUI3;
-    public GameObject otherBunkerUI4;
-    public GameObject otherBunkerUI5;
-
-    [Header("Class Buttons")]
-    public GameObject shotgunClassButton;
-    public GameObject machineGunClassButton;
-    public GameObject sniperClassButton;
+    [Header("Activate Buttons")]
+    public GameObject yesActivateButton;
+    public GameObject noActivateButton;
 
     [Header("Class Cannon/Gun GameObjects")]
     public GameObject bunkerGameObject;
     public GameObject bunkerCannon;
-    public bool bunkerIsShotgun;
-    public bool bunkerIsMachineGun;
-    public bool bunkerIsSniper;
-    public bool bunkerTech2;
-    public bool bunkerTech3;
 
-    [Header("Variables")]
-    public bool fireRateTech2;
-    public bool fireRateTech3;
-    public bool damageTech2;
-    public bool damageTech3;
-    public bool rangeTech2;
-    public bool rangeTech3;
-    public bool accuracyTech2;
-    public bool accuracyTech3;
+    [Header("Damage")]
+    public int damageStat;
+    public Text damageText;
+    public int damageTechLevel;
+    public float upgradeCost = 50f;
+    public float boostTime = 5f;
+    public bool boostOnBool;
+    public int tempTechLevel;
+    public int tempStat;
+    public float boostCost = 100f;
 
-    [Header("Variables Buttons")]
-    public GameObject fireRateButton;
-    public GameObject damageButton;
-    public GameObject rangeButton;
-    public GameObject accuracyButton;
+    [Header("Fire Rate")]
+    public int fireTechLevel;
+    public Text fireText;
+    public int fireStat;
+    public float[] fireRateArray = null;
+    public Tower bunkerTowerScript;
 
-    [Header("Scripts")]
-    private Tower bunkerTowerScript;
+    [Header("Range")]
+    public int rangeStat;
+    public Text rangeText;
+    public int rangeTechLevel;
 
-
-
-    // Use this for initialization
     void Start()
     {
         bunkerTowerScript = bunkerGameObject.GetComponent<Tower>();
 
         bunkerIsActive = false;
-        bunkerIsShotgun = false;
-        bunkerIsSniper = false;
-        bunkerIsMachineGun = false;
 
-        bunkerTech2 = false;
-        bunkerTech3 = false;
+        upgradeLimit = 5;
 
-        fireRateTech2 = false;
-        fireRateTech3 = false;
+        damageStat = 50;
+        fireStat = 50;
+        rangeStat = 50;
 
-        damageTech2 = false;
-        damageTech3 = false;
+        damageTechLevel = 3;
+        fireTechLevel = 3;
+        rangeTechLevel = 3;
 
-        rangeTech2 = false;
-        rangeTech3 = false;
+        boostOnBool = false;
 
-        accuracyTech2 = false;
-        accuracyTech3 = false;
+        StatUpdate();
     }
 
     // Update is called once per frame
@@ -86,225 +73,268 @@ public class Upgrades : MonoBehaviour
         BunkerIsAliveCheck();
     }
 
-    #region UI Activate & Classes Menu
-    public void BunkerIsAliveCheck()
+    #region Bunker UI Activate
+    public void BunkerIsAliveCheck() // If Bunker is Alive, then Bunker UI should be Active
     {
-        if (bunkerGameObject == null)
+        if (bunkerGameObject == null || bunkerGameObject.activeSelf == false)
         {
             bunkerUI.SetActive(false);
         }
+
+        if (bunkerCannon.activeSelf == true) // this is mostly for BunkerRandomStart script
+        {
+            bunkerIsActive = true;
+            bunkerActivateButton.SetActive(false);
+            bunkerActivateMenu.SetActive(false);
+
+            bunkerStatsMenu.SetActive(true);
+            bunkerUpgradeMenu.SetActive(true);
+        }
     }
 
-    public void BunkerActivateFunction()
+    public void BunkerActivateFunction() // ACTIVATE BUTTON: Turns Activate Menu ON
     {
-        if(bunkerActivateButton.activeSelf == true && bunkerClassMenu.activeSelf == false)
+        bunkerActivateMenu.SetActive(true);
+    }
+
+    public void NoActivateFunction() // NO BUTTON: Turns Activate Menu OFF
+    {
+        bunkerActivateMenu.SetActive(false);
+    }
+
+    public void YesActivateFunction() // Turns on STATS
+    {
+        if (activateCost <= EconomyScript.moneys)
         {
             bunkerActivateButton.SetActive(false);
-            bunkerClassMenu.SetActive(true);
-            return;
+            bunkerActivateMenu.SetActive(false);
+
+            bunkerStatsMenu.SetActive(true);
+            bunkerCannon.SetActive(true);
+            bunkerUpgradeMenu.SetActive(true);
+
+            bunkerIsActive = true;
+            bunkerGameObject.GetComponent<Tower>().enabled = true; // Need to Activate Tower script
+            EconomyScript.moneys = EconomyScript.moneys - activateCost;
         }
-
-        if (bunkerActivateButton.activeSelf == false && bunkerClassMenu.activeSelf == true)
-        {
-            bunkerActivateButton.SetActive(true);
-            bunkerClassMenu.SetActive(false);
-            return;
-        }
-
-        
-    }
-
-    public void BunkerClassesMenuFunction()
-    {
-        if (bunkerIsActive == false)
-        {
-            sniperClassButton.SetActive(true);
-            machineGunClassButton.SetActive(true);
-            shotgunClassButton.SetActive(true);
-        }
-        else
-        {
-            BunkerUpgradesMenuFunction();
-        }
-    }
-
-    public void ShotgunButtonFunction()
-    {
-        bunkerClassMenu.SetActive(false);
-        bunkerUpgradeMenu.SetActive(true);
-
-        bunkerCannon.SetActive(true);
-
-        bunkerTowerScript.attackRate = 0.6f;
-
-        bunkerIsShotgun = true;
-    }
-
-    public void SniperButtonFunction()
-    {
-        bunkerClassMenu.SetActive(false);
-        bunkerUpgradeMenu.SetActive(true);
-
-        bunkerCannon.SetActive(true);
-
-        bunkerTowerScript.attackRate = 0.8f;
-
-        bunkerIsSniper = true;
-    }
-
-    public void MachineGunButtonFunction()
-    {
-        bunkerClassMenu.SetActive(false);
-        bunkerUpgradeMenu.SetActive(true);
-
-        bunkerCannon.SetActive(true);
-
-        bunkerTowerScript.attackRate = 0.4f;
-
-        bunkerIsMachineGun = true;
     }
     #endregion
 
-    #region UI Upgrades & Variables Menu
-    public void BunkerUpgradesMenuFunction()
+    #region Upgrades
+    public void StatUpdate()
     {
-        if (fireRateButton.activeSelf == true && damageButton.activeSelf == true && rangeButton.activeSelf == true /*&& accuracyButton.activeSelf == true*/)
+        damageText.text = "Damage = " + damageStat.ToString();
+        fireText.text = "Fire Rate = " + fireStat.ToString();
+        rangeText.text = "Range = " + rangeStat.ToString();
+    }
+
+    public void DamageUpgradeButton()
+    {
+        if (upgradeCost <= EconomyScript.moneys && (damageTechLevel + 1 != 7) && (rangeTechLevel - 1 != -1))
         {
-            fireRateButton.SetActive(false);
-            damageButton.SetActive(false);
-            rangeButton.SetActive(false);
-            //accuracyButton.SetActive(false);
+            damageTechLevel = damageTechLevel + 1; // called in Cannon script
+            damageStat = damageStat + 10;
 
-            otherBunkerUI1.SetActive(true);
-            otherBunkerUI2.SetActive(true);
-            otherBunkerUI3.SetActive(true);
-            otherBunkerUI4.SetActive(true);
-            otherBunkerUI5.SetActive(true);
+            rangeTechLevel = rangeTechLevel - 1; // called in Cannon script
+            rangeStat = rangeStat - 10;
 
+            EconomyScript.moneys = EconomyScript.moneys - upgradeCost;
+
+            DebugStatsCheck();
             return;
         }
 
-        if (fireRateButton.activeSelf == false && damageButton.activeSelf == false && rangeButton.activeSelf == false /*&& accuracyButton.activeSelf == false*/)
+        else
         {
-            fireRateButton.SetActive(true);
-            damageButton.SetActive(true);
-            rangeButton.SetActive(true);
-            //accuracyButton.SetActive(true);
 
-            otherBunkerUI1.SetActive(false);
-            otherBunkerUI2.SetActive(false);
-            otherBunkerUI3.SetActive(false);
-            otherBunkerUI4.SetActive(false);
-            otherBunkerUI5.SetActive(false);
-
-            return;
         }
     }
 
-    public void AttackRateButtonFunction()
+    public void FireRateUpgradeButton()
     {
-        fireRateButton.SetActive(false);
-        damageButton.SetActive(false);
-        rangeButton.SetActive(false);
-        //accuracyButton.SetActive(false);
-
-        otherBunkerUI1.SetActive(true);
-        otherBunkerUI2.SetActive(true);
-        otherBunkerUI3.SetActive(true);
-        otherBunkerUI4.SetActive(true);
-        otherBunkerUI5.SetActive(true);
-
-        if (fireRateTech2 == false)
+        if (upgradeCost <= EconomyScript.moneys && (fireTechLevel + 1 != 7) && (damageTechLevel - 1 != -1))
         {
-            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate - 0.1f;
-            fireRateTech2 = true;
+            fireTechLevel = fireTechLevel + 1;
+            bunkerTowerScript.attackRate = fireRateArray[fireTechLevel];
+            fireStat = fireStat + 10;
+
+            damageTechLevel = damageTechLevel - 1; // called in Cannon script
+            damageStat = damageStat - 10;
+
+            EconomyScript.moneys = EconomyScript.moneys - upgradeCost;
+
+            DebugStatsCheck();
             return;
         }
 
-        if (fireRateTech2 == true && fireRateTech3 == false)
+        else
         {
-            bunkerTowerScript.attackRate = bunkerTowerScript.attackRate - 0.1f;
-            fireRateTech3 = true;
-            return;
+
         }
     }
 
-    public void DamageButtonFunction()
+    public void RangeUpgradeButton()
     {
-        fireRateButton.SetActive(false);
-        damageButton.SetActive(false);
-        rangeButton.SetActive(false);
-        //accuracyButton.SetActive(false);
-
-        otherBunkerUI1.SetActive(true);
-        otherBunkerUI2.SetActive(true);
-        otherBunkerUI3.SetActive(true);
-        otherBunkerUI4.SetActive(true);
-        otherBunkerUI5.SetActive(true);
-
-        if (damageTech2 == false)
+        if (upgradeCost <= EconomyScript.moneys && (rangeTechLevel + 1 != 7) && (fireTechLevel - 1 != -1))
         {
-            damageTech2 = true;
+            rangeTechLevel = rangeTechLevel + 1; // called in Cannon script
+            rangeStat = rangeStat + 10;
+
+            fireTechLevel = fireTechLevel - 1;
+            bunkerTowerScript.attackRate = fireRateArray[fireTechLevel];
+            fireStat = fireStat - 10;
+
+            EconomyScript.moneys = EconomyScript.moneys - upgradeCost;
+
+            DebugStatsCheck();
             return;
         }
 
-        if(damageTech2 == true && damageTech3 == false)
+        else
         {
-            damageTech3 = true;
-            return;
+
         }
     }
 
-    public void RangeButtonFunction()
+    public void DebugStatsCheck()
     {
-        fireRateButton.SetActive(false);
-        damageButton.SetActive(false);
-        rangeButton.SetActive(false);
-        //accuracyButton.SetActive(false);
+        StatUpdate();
 
-        otherBunkerUI1.SetActive(true);
-        otherBunkerUI2.SetActive(true);
-        otherBunkerUI3.SetActive(true);
-        otherBunkerUI4.SetActive(true);
-        otherBunkerUI5.SetActive(true);
+        Debug.Log("damageTechLevel = " + damageTechLevel);
+        Debug.Log("fireTechLevel = " + fireTechLevel);
+        Debug.Log("rangeTechLevel = " + rangeTechLevel);
+    }
 
-        if (rangeTech2 == false)
+    #endregion
+
+    #region Boost Buttons
+    public void DamageBoostButton()
+    {
+        if (boostOnBool == false && boostCost <= EconomyScript.moneys)
         {
-            rangeTech2 = true;
-            return;
-        }
-
-        if (rangeTech2 == true && rangeTech3 == false)
-        {
-            rangeTech3 = true;
-            return;
+            EconomyScript.moneys = EconomyScript.moneys - boostCost;
+            StartCoroutine(DamageBoostDuration());
         }
     }
 
-    public void AccuracyButtonFunction()
+    IEnumerator DamageBoostDuration()
     {
-        fireRateButton.SetActive(false);
-        damageButton.SetActive(false);
-        rangeButton.SetActive(false);
-        //accuracyButton.SetActive(false);
+        DamageBoostOn();
+        boostOnBool = true;
 
-        otherBunkerUI1.SetActive(true);
-        otherBunkerUI2.SetActive(true);
-        otherBunkerUI3.SetActive(true);
-        otherBunkerUI4.SetActive(true);
-        otherBunkerUI5.SetActive(true);
+        yield return new WaitForSeconds(boostTime);
 
-        if (accuracyTech2 == false)
+        DamageBoostOff();
+        boostOnBool = false;
+    }
+
+    public void DamageBoostOn()
+    {
+        tempTechLevel = damageTechLevel;
+
+        damageTechLevel = 8;
+
+        tempStat = damageStat;
+
+        damageStat = 100;
+        
+        StatUpdate();
+    }
+
+    public void DamageBoostOff()
+    {
+        damageTechLevel = tempTechLevel;
+
+        damageStat = tempStat;
+
+        StatUpdate();
+    }
+
+    public void FireBoostButton()
+    {
+        if (boostOnBool == false && boostCost <= EconomyScript.moneys)
         {
-            accuracyTech2 = true;
-            return;
-        }
-
-        if (accuracyTech2 == true && accuracyTech3 == false)
-        {
-            accuracyTech3 = true;
-            return;
+            EconomyScript.moneys = EconomyScript.moneys - boostCost;
+            StartCoroutine(FireBoostDuration());
         }
     }
+
+    IEnumerator FireBoostDuration()
+    {
+        FireBoostOn();
+        boostOnBool = true;
+
+        yield return new WaitForSeconds(boostTime);
+
+        FireBoostOff();
+        boostOnBool = false;
+    }
+
+    public void FireBoostOn()
+    {
+        tempTechLevel = fireTechLevel;
+
+        fireTechLevel = 8;
+
+        bunkerTowerScript.attackRate = fireRateArray[fireTechLevel];
+
+        tempStat = fireStat;
+
+        fireStat = 100;
+
+        StatUpdate();
+    }
+
+    public void FireBoostOff()
+    {
+        fireTechLevel = tempTechLevel;
+        bunkerTowerScript.attackRate = fireRateArray[fireTechLevel];
+
+        fireStat = tempStat;
+
+        StatUpdate();
+    }
+
+    public void RangeBoostButton()
+    {
+        if (boostOnBool == false && boostCost <= EconomyScript.moneys)
+        {
+            EconomyScript.moneys = EconomyScript.moneys - boostCost;
+            StartCoroutine(RangeBoostDuration());
+        }
+    }
+
+    IEnumerator RangeBoostDuration()
+    {
+        RangeBoostOn();
+        boostOnBool = true;
+
+        yield return new WaitForSeconds(boostTime);
+
+        RangeBoostOff();
+        boostOnBool = false;
+    }
+
+    public void RangeBoostOn()
+    {
+        tempTechLevel = rangeTechLevel;
+
+        rangeTechLevel = 8;
+
+        tempStat = rangeStat;
+
+        rangeStat = 100;
+
+        StatUpdate();
+    }
+
+    public void RangeBoostOff()
+    {
+        rangeTechLevel = tempTechLevel;
+
+        rangeStat = tempStat;
+
+        StatUpdate();
+    }    
     #endregion
 }

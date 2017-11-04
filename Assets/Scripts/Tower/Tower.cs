@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public Cannon cannon; // Reference to Cannon inside Tower
-    public float attackRate = 0.5f; // Rate of attack in world units
+    public Cannon cannon; // Reference to Cannon Script inside Tower
+    public float attackRate = 0.5f;
     public float attackRadius = 5f; // Distance of attack in world units
 
     private float attackTimer = 0f; // Timer to count up to attackRate
@@ -15,12 +15,14 @@ public class Tower : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+ 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         attackTimer = attackTimer + Time.deltaTime;
 
         if (attackTimer >= attackRate)

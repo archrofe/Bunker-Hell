@@ -33,7 +33,7 @@ public class AIAgent : MonoBehaviour
     {
         Tower tower = col.GetComponent<Tower>();
 
-        if (tower != null)
+        if (tower != null && tower.enabled == true)
         {
             towers.Add(tower);
         }
