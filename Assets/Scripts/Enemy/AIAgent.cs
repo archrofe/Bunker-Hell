@@ -95,10 +95,10 @@ public class AIAgent : MonoBehaviour
             nav.SetDestination(navTarget.position);
         }
 
-        if (closest = null)
+        /*if (closest == null)
         {
             closest = GetClosestTower();
-        }
+        }*/
     }
     #endregion
 }
