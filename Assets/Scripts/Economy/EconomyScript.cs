@@ -5,28 +5,28 @@ using UnityEngine.UI;
 
 public class EconomyScript : MonoBehaviour
 {
-
     public float timer;
     public Text theTime;
     public Text gold;
     public static float moneys;
     public int totalGold;
 
-
-
-    // Use this for initialization
     void Start()
     {
         timer = 0f;
-        moneys = 1000f;
+        moneys = 1500f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         totalGold = Mathf.RoundToInt(moneys);
 
-        moneys = moneys + 1 * Time.deltaTime;
+        moneys = moneys - 25 * Time.deltaTime;
+
+        if (moneys <= 0)
+        {
+            moneys = 0;
+        }
 
         timer = timer + 1 * Time.deltaTime;
 
