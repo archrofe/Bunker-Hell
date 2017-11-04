@@ -130,7 +130,7 @@ public class Upgrades : MonoBehaviour
 
     public void DamageUpgradeButton()
     {
-        if (upgradeCost <= EconomyScript.moneys && (damageTechLevel + 1 != 7) && (rangeTechLevel - 1 != -1))
+        if (upgradeCost <= EconomyScript.moneys && (damageTechLevel + 1 != 7) && (rangeTechLevel - 1 != -1) && boostOnBool == false)
         {
             damageTechLevel = damageTechLevel + 1; // called in Cannon script
             damageStat = damageStat + 10;
@@ -152,7 +152,7 @@ public class Upgrades : MonoBehaviour
 
     public void FireRateUpgradeButton()
     {
-        if (upgradeCost <= EconomyScript.moneys && (fireTechLevel + 1 != 7) && (damageTechLevel - 1 != -1))
+        if (upgradeCost <= EconomyScript.moneys && (fireTechLevel + 1 != 7) && (damageTechLevel - 1 != -1) && boostOnBool == false)
         {
             fireTechLevel = fireTechLevel + 1;
             bunkerTowerScript.attackRate = fireRateArray[fireTechLevel];
@@ -175,7 +175,7 @@ public class Upgrades : MonoBehaviour
 
     public void RangeUpgradeButton()
     {
-        if (upgradeCost <= EconomyScript.moneys && (rangeTechLevel + 1 != 7) && (fireTechLevel - 1 != -1))
+        if (upgradeCost <= EconomyScript.moneys && (rangeTechLevel + 1 != 7) && (fireTechLevel - 1 != -1) && boostOnBool == false)
         {
             rangeTechLevel = rangeTechLevel + 1; // called in Cannon script
             rangeStat = rangeStat + 10;
