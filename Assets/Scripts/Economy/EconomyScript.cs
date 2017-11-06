@@ -13,7 +13,6 @@ public class EconomyScript : MonoBehaviour
 
     public GameObject[] boatChoice = null;
 
-    public bool randomStart;
     public int randomChoice;
 
     [Header("Bools")]
@@ -25,6 +24,10 @@ public class EconomyScript : MonoBehaviour
 
     [Header("Waves")]
     public float wave1Time = 10f;
+    public float wave2Time = 20f;
+    public float wave3Time = 30f;
+    public float wave4Time = 40f;
+    public float wave5Time = 50f;
 
     void Start()
     {
@@ -49,6 +52,8 @@ public class EconomyScript : MonoBehaviour
 
         SetTimer();
         SetGold();
+
+        Waves();
     }
 
     void SetGold()
@@ -63,31 +68,56 @@ public class EconomyScript : MonoBehaviour
 
     void RandomBoat()
     {
-        randomStart = false;
-
-        if (randomStart == false)
-        {
-            randomChoice = Random.Range(0, boatChoice.Length);
-
-            boatChoice[randomChoice].SetActive(true);
-
-            randomStart = true;
-
-            return;
-        }
+        randomChoice = Random.Range(0, boatChoice.Length);
+        boatChoice[randomChoice].SetActive(true);
     }
 
     #region Waves
     void Waves()
     {
-        // to start wave 2
+        // To Start Wave 2
         if (wave1Done == false)
         {
             if (timer >= wave1Time)
             {
-                boatChoice[randomChoice].SetActive(true);
-
+                RandomBoat();
                 wave1Done = true;
+            }
+        }
+        // To Start Wave 3
+        if (wave2Done == false)
+        {
+            if (timer >= wave2Time)
+            {
+                RandomBoat();
+                wave2Done = true;
+            }
+        }
+        // To Start Wave 4
+        if (wave3Done == false)
+        {
+            if (timer >= wave3Time)
+            {
+                RandomBoat();
+                wave3Done = true;
+            }
+        }
+        // To Start Wave 5
+        if (wave4Done == false)
+        {
+            if (timer >= wave4Time)
+            {
+                RandomBoat();
+                wave4Done = true;
+            }
+        }
+        // To Start Wave 6
+        if (wave5Done == false)
+        {
+            if (timer >= wave5Time)
+            {
+                RandomBoat();
+                wave5Done = true;
             }
         }
     }
