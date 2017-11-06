@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] spawnPrefabs;
@@ -29,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 
-    void SpawnBalls()
+    void SpawnEnemies()
     {
         for (int i = 0; i < spawnAmount; i++)
         {
@@ -49,7 +48,9 @@ public class EnemySpawner : MonoBehaviour
             randomPos.y = 1;
 
             // Set spawned object's position
-            clone.transform.position = randomPos;            
+            clone.transform.position = randomPos;
+
+            i++;          
         }
     }
 
@@ -59,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
         hasSpawned = true;
 
         // Spawn the Enemy
-        SpawnBalls();
+        SpawnEnemies();
 
         yield return new WaitForSeconds(spawnInterval); // wait a few seconds
 

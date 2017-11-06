@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class Enemy : MonoBehaviour
 {
     public float health = 100f; // Enemy's health which starts at 100
@@ -48,8 +47,6 @@ public class Enemy : MonoBehaviour
             
         }
 
-    }
-
-    
+    }    
 }
 
