@@ -46,7 +46,7 @@ public class EconomyScript : MonoBehaviour
         totalGold = Mathf.RoundToInt(moneys);
 
         moneys = moneys - (enemyCount/20) * Time.deltaTime;
-        Debug.Log("moneys = " + enemyCount);
+        Debug.Log("enemyCount = " + enemyCount);
 
 
         if (moneys <= 0)
