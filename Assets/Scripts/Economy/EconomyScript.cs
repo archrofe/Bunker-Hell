@@ -69,11 +69,24 @@ public class EconomyScript : MonoBehaviour
     void RandomBoat()
     {
         randomChoice = Random.Range(0, boatChoice.Length);
-        boatChoice[randomChoice].SetActive(true);
+
+        Debug.Log("randomChoice + " + randomChoice);
+
+        for (int i = randomChoice; i < boatChoice.Length; i++)
+        {
+            Debug.Log("i = " + i);
+
+            if (boatChoice[i].activeSelf == false)
+            {
+                boatChoice[i].SetActive(true);
+                Debug.Log("Boat activated = " + i);
+                return;
+            }
+        }
     }
 
-    #region Waves
-    void Waves()
+        #region Waves
+        void Waves()
     {
         // To Start Wave 2
         if (wave1Done == false)
