@@ -72,7 +72,7 @@ public class EconomyScript : MonoBehaviour
 
         Debug.Log("randomChoice + " + randomChoice);
 
-        for (int i = randomChoice; i < boatChoice.Length; i++)
+        for (int i = randomChoice; i < boatChoice.Length; i = Random.Range(0, 6))
         {
             Debug.Log("i = " + i);
 
