@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             EconomyScript.moneys = EconomyScript.moneys + killPoints;
+            EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
             Destroy(gameObject);
         }
     }
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        
+        EconomyScript.enemyCount = EconomyScript.enemyCount + 1;
     }   
 
     void Update()

@@ -15,6 +15,8 @@ public class EconomyScript : MonoBehaviour
 
     public int randomChoice;
 
+    public static float enemyCount;
+
     [Header("Bools")]
     public bool wave1Done = false;
     public bool wave2Done = false;
@@ -34,6 +36,8 @@ public class EconomyScript : MonoBehaviour
         timer = 0f;
         moneys = 1500f;
 
+        enemyCount = 0;
+
         RandomBoat();
     }
 
@@ -41,7 +45,9 @@ public class EconomyScript : MonoBehaviour
     {
         totalGold = Mathf.RoundToInt(moneys);
 
-        moneys = moneys - 25 * Time.deltaTime;
+        moneys = moneys - (enemyCount/20) * Time.deltaTime;
+        Debug.Log("moneys = " + enemyCount);
+
 
         if (moneys <= 0)
         {
@@ -70,16 +76,16 @@ public class EconomyScript : MonoBehaviour
     {
         randomChoice = Random.Range(0, boatChoice.Length);
 
-        Debug.Log("randomChoice + " + randomChoice);
+        //Debug.Log("randomChoice + " + randomChoice);
 
         for (int i = randomChoice; i < boatChoice.Length; i = Random.Range(0, 6))
         {
-            Debug.Log("i = " + i);
+            //Debug.Log("i = " + i);
 
             if (boatChoice[i].activeSelf == false)
             {
                 boatChoice[i].SetActive(true);
-                Debug.Log("Boat activated = " + i);
+                //Debug.Log("Boat activated = " + i);
                 return;
             }
         }
