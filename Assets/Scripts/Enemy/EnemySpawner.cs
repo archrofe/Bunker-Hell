@@ -48,9 +48,7 @@ public class EnemySpawner : MonoBehaviour
             randomPos.y = 1;
 
             // Set spawned object's position
-            clone.transform.position = randomPos;
-
-            i++;          
+            clone.transform.position = randomPos;        
         }
     }
 
@@ -76,6 +74,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 StartCoroutine(SpawnNow());
                 currentSpawn++;
+                spawnAmount++;
             }
         }
     }
