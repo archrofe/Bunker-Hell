@@ -109,6 +109,9 @@ public class Upgrades : MonoBehaviour
             bunkerActivateButton.SetActive(false);
             bunkerActivateMenu.SetActive(false);
 
+            Lose.loseScore++;
+            Debug.Log("bluh" + Lose.loseScore);
+
             bunkerStatsMenu.SetActive(true);
             bunkerCannon.SetActive(true);
             bunkerUpgradeMenu.SetActive(true);

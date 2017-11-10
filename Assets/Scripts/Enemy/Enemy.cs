@@ -40,7 +40,11 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Base"))
         {
-            Destroy(other.transform.parent.gameObject);
+            //Destroy(other.transform.parent.gameObject);
+            Lose.loseScore = Lose.loseScore -1;
+            Debug.Log("Lose Score = " + Lose.loseScore);
+            other.transform.parent.gameObject.SetActive(false);
+            
         }
 
         if (other.gameObject.CompareTag("Bullet"))

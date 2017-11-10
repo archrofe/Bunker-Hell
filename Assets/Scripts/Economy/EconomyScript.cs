@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EconomyScript : MonoBehaviour
 {
-    public float timer;
+    public static float timer;
     public Text theTime;
     public Text gold;
     public static float moneys;
