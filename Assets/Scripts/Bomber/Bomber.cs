@@ -30,7 +30,7 @@ public class Bomber : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F12))
         {
-            EconomyScript.moneys = EconomyScript.moneys + 1000;
+            EconomyScript.moneys = EconomyScript.moneys + 10000;
         }
     }
 
