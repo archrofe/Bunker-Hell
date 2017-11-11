@@ -12,7 +12,7 @@ public class Bomber : MonoBehaviour
 
     [Header("Bomber")]
     public GameObject bomberButton;
-    public float bomberCost = 100;
+    public float bomberCost = 1000;
     public bool bomberMoving;
 
     // Use this for initialization

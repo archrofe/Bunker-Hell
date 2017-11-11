@@ -208,9 +208,9 @@ public class Upgrades : MonoBehaviour
     {
         StatUpdate();
 
-        Debug.Log("damageTechLevel = " + damageTechLevel);
-        Debug.Log("fireTechLevel = " + fireTechLevel);
-        Debug.Log("rangeTechLevel = " + rangeTechLevel);
+        //Debug.Log("damageTechLevel = " + damageTechLevel);
+        //Debug.Log("fireTechLevel = " + fireTechLevel);
+        //Debug.Log("rangeTechLevel = " + rangeTechLevel);
     }
 
     #endregion
