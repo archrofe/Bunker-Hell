@@ -17,7 +17,7 @@ public class Lose : MonoBehaviour {
         lose.enabled = false;
         time = EconomyScript.timer;
         loseScore = 1;
-        Debug.Log("loseScore =" + loseScore);
+        Debug.Log("loseScore Start = " + loseScore);
     }
 	
 	// Update is called once per frame

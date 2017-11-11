@@ -46,6 +46,8 @@ public class Upgrades : MonoBehaviour
     public Text rangeText;
     public int rangeTechLevel;
 
+    
+
     void Start()
     {
         bunkerTowerScript = bunkerGameObject.GetComponent<Tower>();
@@ -64,6 +66,8 @@ public class Upgrades : MonoBehaviour
 
         boostOnBool = false;
 
+        
+
         StatUpdate();
     }
 
@@ -71,6 +75,7 @@ public class Upgrades : MonoBehaviour
     void Update()
     {
         BunkerIsAliveCheck();
+        
     }
 
     #region Bunker UI Activate
@@ -110,7 +115,7 @@ public class Upgrades : MonoBehaviour
             bunkerActivateMenu.SetActive(false);
 
             Lose.loseScore++;
-            Debug.Log("bluh" + Lose.loseScore);
+            Debug.Log("loseScore = " + Lose.loseScore);
 
             bunkerStatsMenu.SetActive(true);
             bunkerCannon.SetActive(true);
@@ -338,6 +343,6 @@ public class Upgrades : MonoBehaviour
         rangeStat = tempStat;
 
         StatUpdate();
-    }    
+    }
     #endregion
 }
