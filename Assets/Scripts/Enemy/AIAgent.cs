@@ -33,13 +33,18 @@ public class AIAgent : MonoBehaviour
     {
         Tower tower = col.GetComponent<Tower>();
 
-        if (tower != null && tower.enabled == true)
+        if (tower != null && tower.enabled == true) // If triggered gameobject has a Tower script and that Tower script is active
         {
             towers.Add(tower);
         }
+
+        if (tower != null && tower.enabled == false)
+        {
+            tower = null;
+        }
     }
 
-    void OnTriggerExit(Collider col)
+    /*void OnTriggerExit(Collider col) // Not using this bit anyway
     {
         Tower tower = col.GetComponent<Tower>();
 
@@ -47,7 +52,7 @@ public class AIAgent : MonoBehaviour
         {
             towers.Remove(tower);
         }
-    }
+    }*/
 
     #region Tower & Attack
     Tower GetClosestTower()
@@ -61,6 +66,7 @@ public class AIAgent : MonoBehaviour
         for (int i = 0; i < towers.Count; i++)
         {
             float distance = Vector3.Distance(transform.position, towers[i].transform.position);
+
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -95,9 +101,12 @@ public class AIAgent : MonoBehaviour
             nav.SetDestination(navTarget.position);
         }
 
-        /*if (closest == null)
+        /*if (navTarget.transform.gameObject.activeSelf == false)
         {
-            closest = GetClosestTower();
+            //Debug.Log("navTarget " + navTarget + " not Active");
+            
+
+            //Debug.Log("closest = " + closest);
         }*/
     }
     #endregion

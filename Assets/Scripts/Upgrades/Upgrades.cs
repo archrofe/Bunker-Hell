@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Upgrades : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class Upgrades : MonoBehaviour
     public Text rangeText;
     public int rangeTechLevel;
 
-    
+    [Header("Children")]
+    public GameObject bunkerBase;
 
     void Start()
     {
@@ -123,6 +125,10 @@ public class Upgrades : MonoBehaviour
 
             bunkerIsActive = true;
             bunkerGameObject.GetComponent<Tower>().enabled = true; // Need to Activate Tower script
+            bunkerGameObject.GetComponent<Collider>().enabled = true; // Need to Activate Collider
+
+            bunkerBase.GetComponent<NavMeshObstacle>().enabled = false;
+
             EconomyScript.moneys = EconomyScript.moneys - activateCost;
         }
     }

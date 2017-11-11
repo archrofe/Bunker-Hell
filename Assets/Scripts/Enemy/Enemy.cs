@@ -42,9 +42,12 @@ public class Enemy : MonoBehaviour
         {
             //Destroy(other.transform.parent.gameObject);
             Lose.loseScore = Lose.loseScore -1;
-            Debug.Log("Lose Score = " + Lose.loseScore);
+            Debug.Log("loseScore = " + Lose.loseScore);
             other.transform.parent.gameObject.SetActive(false);
-            
+            other.transform.parent.gameObject.GetComponent<Tower>().enabled = false;
+            other.transform.parent.gameObject.GetComponent<Collider>().enabled = false;
+
+            Destroy(other.transform.parent.gameObject);
         }
 
         if (other.gameObject.CompareTag("Explosion"))
@@ -52,14 +55,8 @@ public class Enemy : MonoBehaviour
             EconomyScript.moneys = EconomyScript.moneys + killPoints;
             EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
             Destroy(gameObject);
-            Debug.Log("Killed by Bomb");
+            //Debug.Log("Killed by Bomb");
         }
-
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            
-        }
-
     }    
 }
 
