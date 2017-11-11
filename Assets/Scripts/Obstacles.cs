@@ -14,6 +14,8 @@ public class Obstacles : MonoBehaviour
     public int spawnInterval = 1;
     private bool hasSpawned = false;
 
+    public int[] randomRotation = null;
+
     // Use this for initialization
     void Start()
     {
@@ -58,6 +60,10 @@ public class Obstacles : MonoBehaviour
 
             // Set spawned object's position
             clone.transform.position = randomPos;
+
+            int randomRotIndex = Random.Range(0,randomRotation.Length);
+
+            clone.transform.rotation = Quaternion.Euler(0, randomRotation[randomRotIndex], 0);
         }
     }
 
