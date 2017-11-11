@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Bomb hit Ground");
+            //Debug.Log("Bomb hit Ground");
             ContactPoint bombGround = other.contacts[0];
             GameObject clone;
             clone = Instantiate(explosion, bombGround.point, Quaternion.identity);
