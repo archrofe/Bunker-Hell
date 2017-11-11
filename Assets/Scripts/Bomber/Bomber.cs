@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bomber : MonoBehaviour
 {
@@ -28,10 +29,18 @@ public class Bomber : MonoBehaviour
         LeftMovement();
         BomberButtonActivateCheck();
 
+        #region Debugging
         if (Input.GetKeyDown(KeyCode.F12))
         {
             EconomyScript.moneys = EconomyScript.moneys + 50000;
         }
+
+        if(Input.GetKeyDown(KeyCode.F11))
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        #endregion
     }
 
     #region Movement

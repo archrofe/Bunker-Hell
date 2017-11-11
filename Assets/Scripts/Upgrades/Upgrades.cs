@@ -88,6 +88,16 @@ public class Upgrades : MonoBehaviour
             bunkerUI.SetActive(false);
         }
 
+        if (activateCost > EconomyScript.moneys)
+        {
+            bunkerActivateButton.SetActive(false);
+        }
+
+        if (activateCost <= EconomyScript.moneys)
+        {
+            bunkerActivateButton.SetActive(true);
+        }
+
         if (bunkerCannon.activeSelf == true) // this is mostly for BunkerRandomStart script
         {
             bunkerIsActive = true;
