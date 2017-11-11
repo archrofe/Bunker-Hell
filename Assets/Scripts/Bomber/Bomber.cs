@@ -27,6 +27,11 @@ public class Bomber : MonoBehaviour
     {
         LeftMovement();
         BomberButtonActivateCheck();
+
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            EconomyScript.moneys = EconomyScript.moneys + 1000;
+        }
     }
 
     #region Movement
