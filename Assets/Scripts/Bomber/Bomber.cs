@@ -71,6 +71,11 @@ public class Bomber : MonoBehaviour
         {
             bomberButton.SetActive(true);
         }
+
+        if (bomberCost > EconomyScript.moneys)
+        {
+            bomberButton.SetActive(false);
+        }
     }
 
     public void BomberButton()
