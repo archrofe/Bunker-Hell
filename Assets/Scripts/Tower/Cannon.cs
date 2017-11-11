@@ -46,6 +46,11 @@ public class Cannon : MonoBehaviour
             q.lifeTime = rangeArray[bunkerUI.GetComponent<Upgrades>().rangeTechLevel];
             #endregion
 
+            if (bunkerUI.GetComponent<Upgrades>().boostOnBool == true)
+            {
+                clone.GetComponent<TrailRenderer>().enabled = true;
+            }
+
             p.direction = fireDirection;
 
             return;
