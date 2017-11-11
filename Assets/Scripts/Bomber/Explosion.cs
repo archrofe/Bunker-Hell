@@ -15,7 +15,10 @@ public class Explosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(gameObject.GetComponent<Collider>().enabled == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter(Collider col)
