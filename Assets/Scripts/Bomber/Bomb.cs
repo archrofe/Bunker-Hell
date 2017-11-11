@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    public GameObject explosion;
 
     // Use this for initialization
     void Start()
@@ -21,6 +22,10 @@ public class Bomb : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+            Debug.Log("Bomb hit Ground");
+            ContactPoint bombGround = other.contacts[0];
+            GameObject clone;
+            clone = Instantiate(explosion, bombGround.point, Quaternion.identity);
             Destroy(gameObject);
         }
     }

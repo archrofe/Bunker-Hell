@@ -47,6 +47,14 @@ public class Enemy : MonoBehaviour
             
         }
 
+        if (other.gameObject.CompareTag("Explosion"))
+        {
+            EconomyScript.moneys = EconomyScript.moneys + killPoints;
+            EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
+            Destroy(gameObject);
+            Debug.Log("Killed by Bomb");
+        }
+
         if (other.gameObject.CompareTag("Bullet"))
         {
             
