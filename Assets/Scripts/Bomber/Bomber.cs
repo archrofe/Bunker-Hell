@@ -81,6 +81,7 @@ public class Bomber : MonoBehaviour
             bomberButton.SetActive(false); // 
             bomberMoving = true;
             bomberArrived = false; // This should tell Bomber to start moving
+            //BombSpawner.currentSpawn = 0;
             return;
         }
     }

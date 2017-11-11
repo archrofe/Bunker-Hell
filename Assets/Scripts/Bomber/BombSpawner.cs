@@ -70,13 +70,12 @@ public class BombSpawner : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BombTrigger"))
         {
-            Debug.Log("BombTrigger hit");
+            //Debug.Log("BombTrigger hit");
             if (!hasSpawned && currentSpawn < maxSpawn)
             {
-                Debug.Log("Happened");
+                //Debug.Log("Happened");
                 StartCoroutine(SpawnNow());
                 currentSpawn++;
-                spawnAmount++;
             }
         }
     }
