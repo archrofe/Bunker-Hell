@@ -30,7 +30,7 @@ public class Bomber : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F12))
         {
-            EconomyScript.moneys = EconomyScript.moneys + 10000;
+            EconomyScript.moneys = EconomyScript.moneys + 50000;
         }
     }
 
@@ -75,6 +75,11 @@ public class Bomber : MonoBehaviour
         if (bomberCost <= EconomyScript.moneys) // Button only appears if you have enough money to use it
         {
             bomberButton.SetActive(true);
+
+            if (bomberMoving == true)
+            {
+                bomberButton.SetActive(false);
+            }
         }
 
         if (bomberCost > EconomyScript.moneys)
