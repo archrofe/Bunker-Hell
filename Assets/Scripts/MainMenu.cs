@@ -195,7 +195,7 @@ public class MainMenu : MonoBehaviour
         }
         #endregion
         #region Resolution
-        index = PlayerPrefs.GetInt("Res", 3);
+        index = PlayerPrefs.GetInt("Res", 4);
         int fullWindow = PlayerPrefs.GetInt("FullWindow", 1);
         if (fullWindow == 0)
         {
