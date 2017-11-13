@@ -91,8 +91,8 @@ public class EconomyScript : MonoBehaviour
         }
     }
 
-        #region Waves
-        void Waves()
+    #region Waves
+    void Waves()
     {
         // To Start Wave 2
         if (wave1Done == false)
