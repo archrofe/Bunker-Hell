@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 64a08e3e72487704bb1eb9b8e98049f9
+timeCreated: 1510891590
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: World Conflict
+  fontNames:
+  - World Conflict
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
