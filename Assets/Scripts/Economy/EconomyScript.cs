@@ -25,20 +25,25 @@ public class EconomyScript : MonoBehaviour
     public bool wave5Done = false;
 
     [Header("Waves")]
-    public float wave1Time = 10f;
-    public float wave2Time = 20f;
-    public float wave3Time = 30f;
-    public float wave4Time = 40f;
-    public float wave5Time = 50f;
+    public float wave1Check = 1f;
+    public float wave2Check = 2f;
+    public float wave3Check = 3f;
+    public float wave4Check = 4f;
+    public float wave5Check = 5f;
+
+    public static float BunkerCheck;
 
     void Start()
     {
         timer = 0f;
-        moneys = 1500f;
+        moneys = 500f;
 
         enemyCount = 0;
 
         RandomBoat();
+
+        BunkerCheck = 0f;
+        Debug.Log("BunkerCheck = " + BunkerCheck);
     }
 
     void Update()
@@ -97,7 +102,7 @@ public class EconomyScript : MonoBehaviour
         // To Start Wave 2
         if (wave1Done == false)
         {
-            if (timer >= wave1Time)
+            if (BunkerCheck == wave1Check)
             {
                 RandomBoat();
                 wave1Done = true;
@@ -106,7 +111,7 @@ public class EconomyScript : MonoBehaviour
         // To Start Wave 3
         if (wave2Done == false)
         {
-            if (timer >= wave2Time)
+            if (BunkerCheck == wave2Check)
             {
                 RandomBoat();
                 wave2Done = true;
@@ -115,7 +120,7 @@ public class EconomyScript : MonoBehaviour
         // To Start Wave 4
         if (wave3Done == false)
         {
-            if (timer >= wave3Time)
+            if (BunkerCheck == wave3Check)
             {
                 RandomBoat();
                 wave3Done = true;
@@ -124,7 +129,7 @@ public class EconomyScript : MonoBehaviour
         // To Start Wave 5
         if (wave4Done == false)
         {
-            if (timer >= wave4Time)
+            if (BunkerCheck == wave4Check)
             {
                 RandomBoat();
                 wave4Done = true;
@@ -133,7 +138,7 @@ public class EconomyScript : MonoBehaviour
         // To Start Wave 6
         if (wave5Done == false)
         {
-            if (timer >= wave5Time)
+            if (BunkerCheck == wave5Check)
             {
                 RandomBoat();
                 wave5Done = true;

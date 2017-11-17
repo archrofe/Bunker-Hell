@@ -10,7 +10,7 @@ public class Upgrades : MonoBehaviour
     public GameObject bunkerUI;
     public GameObject bunkerActivateButton;
     public GameObject bunkerActivateMenu;
-    public float activateCost = 150f;
+    public float activateCost = 1000f;
     public GameObject bunkerStatsMenu;
     public GameObject bunkerUpgradeMenu;
     public bool bunkerIsActive;
@@ -128,6 +128,9 @@ public class Upgrades : MonoBehaviour
 
             Lose.loseScore++;
             Debug.Log("loseScore = " + Lose.loseScore);
+
+            EconomyScript.BunkerCheck++;
+            Debug.Log("BunkerCheck = " + EconomyScript.BunkerCheck);
 
             bunkerStatsMenu.SetActive(true);
             bunkerCannon.SetActive(true);
