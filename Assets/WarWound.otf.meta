@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 308eabeb50da2444c995efc7185f097d
+timeCreated: 1510879495
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: War Wound
+  fontNames:
+  - War Wound
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
