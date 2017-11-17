@@ -42,7 +42,7 @@ public class Cannon : MonoBehaviour
             DestroyOnLifeTime q = clone.GetComponent<DestroyOnLifeTime>();
 
             #region Damage & Range Upgrades
-            p.damage = damageArray[bunkerUI.GetComponent<Upgrades>().damageTechLevel]; // -1 is offset in Array to correct Index
+            p.damage = damageArray[bunkerUI.GetComponent<Upgrades>().damageTechLevel];
             q.lifeTime = rangeArray[bunkerUI.GetComponent<Upgrades>().rangeTechLevel];
             #endregion
 

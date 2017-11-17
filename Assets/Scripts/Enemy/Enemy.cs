@@ -13,12 +13,12 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0)
+        /*if (health <= 0)
         {
-            EconomyScript.moneys = EconomyScript.moneys + killPoints;
+            //EconomyScript.moneys = EconomyScript.moneys + killPoints;
             EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
             Destroy(gameObject);
-        }
+        }*/
     }
 
     void Awake()
@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Base"))
         {
-            //Destroy(other.transform.parent.gameObject);
             Lose.loseScore = Lose.loseScore -1;
             Debug.Log("loseScore = " + Lose.loseScore);
             other.transform.parent.gameObject.SetActive(false);
@@ -52,10 +51,21 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Explosion"))
         {
-            EconomyScript.moneys = EconomyScript.moneys + killPoints;
-            EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
-            Destroy(gameObject);
-            //Debug.Log("Killed by Bomb");
+            if (health <= other.gameObject.GetComponent<Explosion>().damage) // If Enemy hit by Explosion, check if Health is less than Explosion's Damage.
+            {
+                EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
+                Destroy(gameObject);
+            }
+        }
+
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            if (health <= other.gameObject.GetComponent<Projectile>().damage) // If Enemy hit by Bullet, check if Health is less than Bullet's Damage.
+            {
+                EconomyScript.moneys = EconomyScript.moneys + killPoints;
+                EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
+                Destroy(gameObject);
+            }
         }
     }    
 }
