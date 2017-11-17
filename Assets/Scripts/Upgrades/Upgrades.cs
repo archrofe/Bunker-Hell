@@ -88,7 +88,7 @@ public class Upgrades : MonoBehaviour
             bunkerUI.SetActive(false);
         }
 
-        if (activateCost > EconomyScript.moneys)
+        /*if (activateCost > EconomyScript.moneys)
         {
             bunkerActivateButton.SetActive(false);
         }
@@ -96,7 +96,7 @@ public class Upgrades : MonoBehaviour
         if (activateCost <= EconomyScript.moneys)
         {
             bunkerActivateButton.SetActive(true);
-        }
+        }*/
 
         if (bunkerCannon.activeSelf == true) // this is mostly for BunkerRandomStart script
         {

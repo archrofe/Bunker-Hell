@@ -27,7 +27,7 @@ public class Bomber : MonoBehaviour
     void Update()
     {
         LeftMovement();
-        BomberButtonActivateCheck();
+        //BomberButtonActivateCheck();
 
         #region Debugging
         if (Input.GetKeyDown(KeyCode.F12))
@@ -101,12 +101,15 @@ public class Bomber : MonoBehaviour
     {
         if (bomberMoving == false) // So you have to wait for Bomber to complete its run before using again
         {
-            EconomyScript.moneys = EconomyScript.moneys - bomberCost; // Cost
-            bomberButton.SetActive(false); // 
-            bomberMoving = true;
-            bomberArrived = false; // This should tell Bomber to start moving
-            //BombSpawner.currentSpawn = 0;
-            return;
+            if (bomberCost <= EconomyScript.moneys)
+            {
+                EconomyScript.moneys = EconomyScript.moneys - bomberCost; // Cost
+                //bomberButton.SetActive(false); // 
+                bomberMoving = true;
+                bomberArrived = false; // This should tell Bomber to start moving
+                                       //BombSpawner.currentSpawn = 0;
+                return;
+            }
         }
     }
     #endregion
