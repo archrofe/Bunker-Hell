@@ -8,13 +8,14 @@ public class Lose : MonoBehaviour
 
     public Text lose;
     public static float loseScore;
-    public float time;
+    public static float time;
     public Text score;
-
+    public Image bGround;
 
     // Use this for initialization
     void Start()
     {
+        bGround.enabled = false;
         score.enabled = false;
         lose.enabled = false;
         time = EconomyScript.timer;
@@ -30,9 +31,10 @@ public class Lose : MonoBehaviour
         {
             //Debug.Log("works");
             Time.timeScale = 0;
-            score.text = "Your Score:" + time.ToString("0.0");
+            score.text = "Your Time: " + time.ToString("0.0");
             lose.enabled = true;
             score.enabled = true;
+            bGround.enabled = true;
         }
     }
 }
