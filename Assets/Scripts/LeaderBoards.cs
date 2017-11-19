@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LeaderBoards : MonoBehaviour {
-
+    public float curHighScore;
     public float reset;
     public float highTime;
     public float topScore;
@@ -15,9 +15,12 @@ public class LeaderBoards : MonoBehaviour {
     public Text firstPlace;
     public Text secPlace;
     public Text thirPlace;
+    public Text highPlace;
 
     // Use this for initialization
     void Start () {
+        curHighScore = PlayerPrefs.GetFloat("1st Place");
+        highPlace.text = "H i g h s c o r e : " + curHighScore.ToString("0 . 0");
         reset = 0;
         // 1st place
         topScore = PlayerPrefs.GetFloat("1st Place");

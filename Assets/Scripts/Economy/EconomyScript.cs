@@ -69,7 +69,7 @@ public class EconomyScript : MonoBehaviour
 
     void SetGold()
     {
-        gold.text = "Gold: " + totalGold.ToString();
+        gold.text = "Cash: " + totalGold.ToString();
     }
 
     void SetTimer()
