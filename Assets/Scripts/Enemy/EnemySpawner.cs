@@ -75,6 +75,11 @@ public class EnemySpawner : MonoBehaviour
                 StartCoroutine(SpawnNow());
                 currentSpawn++;
                 spawnAmount++;
+
+                if (spawnAmount >= 50)
+                {
+                    spawnAmount = 50;
+                }
             }
         }
     }
