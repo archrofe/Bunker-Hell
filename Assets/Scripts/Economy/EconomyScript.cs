@@ -41,6 +41,7 @@ public class EconomyScript : MonoBehaviour
         enemyCount = 0;
 
         RandomBoat();
+        RandomBoat();
 
         BunkerCheck = 0f;
         Debug.Log("BunkerCheck = " + BunkerCheck);
@@ -133,15 +134,6 @@ public class EconomyScript : MonoBehaviour
             {
                 RandomBoat();
                 wave4Done = true;
-            }
-        }
-        // To Start Wave 6
-        if (wave5Done == false)
-        {
-            if (BunkerCheck == wave5Check)
-            {
-                RandomBoat();
-                wave5Done = true;
             }
         }
     }
