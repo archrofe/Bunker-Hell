@@ -57,6 +57,7 @@ public class MainMenu : MonoBehaviour
 
             mainMenu.SetActive(true);
             TogglePause();
+
         }
 
 

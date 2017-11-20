@@ -11,12 +11,14 @@ public class Cannon : MonoBehaviour
 
     public GameObject bulletPrefab;
 
+    public Light shot;
+
     public float[] damageArray = null;
     public float[] rangeArray = null;
 
     void Start()
     {
-
+        shot.enabled = false;
     }
 
     void Update()
@@ -39,6 +41,8 @@ public class Cannon : MonoBehaviour
 
             Projectile p = clone.GetComponent<Projectile>();
 
+            StartCoroutine(Shot());
+
             DestroyOnLifeTime q = clone.GetComponent<DestroyOnLifeTime>();
 
             #region Damage & Range Upgrades
@@ -55,6 +59,15 @@ public class Cannon : MonoBehaviour
 
             return;
         }
+    }
+
+    IEnumerator Shot()
+    {
+        shot.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+        shot.enabled = false;
     }
 }
 
