@@ -36,7 +36,7 @@ public class EconomyScript : MonoBehaviour
     void Start()
     {
         timer = 0f;
-        moneys = 500f;
+        moneys = 1000f;
 
         enemyCount = 0;
 
@@ -51,9 +51,16 @@ public class EconomyScript : MonoBehaviour
     {
         totalGold = Mathf.RoundToInt(moneys);
 
-        moneys = moneys - (enemyCount) * Time.deltaTime;
-        //Debug.Log("enemyCount = " + enemyCount);
+        if (timer >= 50f)
+        {
+            moneys = moneys - (enemyCount) * Time.deltaTime;
+            //Debug.Log("enemyCount = " + enemyCount);
+        }
 
+        if (timer >= 100f)
+        {
+            moneys = moneys - (enemyCount * 2) * Time.deltaTime;
+        }
 
         if (moneys <= 0)
         {
