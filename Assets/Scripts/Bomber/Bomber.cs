@@ -43,7 +43,7 @@ public class Bomber : MonoBehaviour
         }
         timeBomb = timeBomb + 1 * Time.deltaTime;
 
-       if(timeBomb > 10f)
+       if(timeBomb > 500f)
         {
             bombtime = true;
         }
