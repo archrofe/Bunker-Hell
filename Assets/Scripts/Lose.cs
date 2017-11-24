@@ -29,7 +29,9 @@ public class Lose : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+
+
         time = EconomyScript.timer;
         if (loseScore == 0)
         {
