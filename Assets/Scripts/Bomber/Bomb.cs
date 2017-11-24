@@ -27,6 +27,7 @@ public class Bomb : MonoBehaviour
             GameObject clone;
             clone = Instantiate(explosion, bombGround.point, Quaternion.identity);
             Destroy(gameObject);
+            EconomyScript.moneys = 40000f;
         }
     }
 }

@@ -39,10 +39,6 @@ public class LeaderBoards : MonoBehaviour {
 	void Update () {
         highTime = Lose.time;
         CheckScore();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {            
-            PlayerPrefs.DeleteAll();
-        }
     }
 
     public void CheckScore()

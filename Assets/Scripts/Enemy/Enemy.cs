@@ -13,12 +13,12 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0)
+        /*if (health <= 0)
         {
             EconomyScript.moneys = EconomyScript.moneys + killPoints;
             EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
             Destroy(gameObject);
-        }
+        }*/
     }
 
     void Awake()
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
             Destroy(other.transform.parent.gameObject);
         }
 
-        /*if (other.gameObject.CompareTag("Explosion"))
+        if (other.gameObject.CompareTag("Explosion"))
         {
             if (health <= other.gameObject.GetComponent<Explosion>().damage) // If Enemy hit by Explosion, check if Health is less than Explosion's Damage.
             {
@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
                 EconomyScript.enemyCount = EconomyScript.enemyCount - 1;
                 Destroy(gameObject);
             }
-        }*/
+        }
     }    
 }
 
