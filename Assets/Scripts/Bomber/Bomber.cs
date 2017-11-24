@@ -16,16 +16,38 @@ public class Bomber : MonoBehaviour
     public float bomberCost = 1000;
     public bool bomberMoving;
 
+    public bool bombtime;
+    public float timeBomb;
+
     // Use this for initialization
     void Start()
     {
-        bomberMoving = false;
+        bombtime = false;
+       bomberMoving = false;
         bomberArrived = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (bombtime)
+        {
+            
+                                                                      //bomberButton.SetActive(false); // 
+            bomberMoving = true;
+            bomberArrived = false; // This should tell Bomber to start moving
+            bombtime = false;
+            timeBomb = 0f;
+            //BombSpawner.currentSpawn = 0;
+            return;
+        }
+        timeBomb = timeBomb + 1 * Time.deltaTime;
+
+       if(timeBomb > 10f)
+        {
+            bombtime = true;
+        }
+
         LeftMovement();
         //BomberButtonActivateCheck();
 
@@ -99,7 +121,7 @@ public class Bomber : MonoBehaviour
 
     public void BomberButton()
     {
-        if (bomberMoving == false) // So you have to wait for Bomber to complete its run before using again
+        if (bomberMoving == false  ) // So you have to wait for Bomber to complete its run before using again
         {
             if (bomberCost <= EconomyScript.moneys)
             {
@@ -107,7 +129,9 @@ public class Bomber : MonoBehaviour
                 //bomberButton.SetActive(false); // 
                 bomberMoving = true;
                 bomberArrived = false; // This should tell Bomber to start moving
-                                       //BombSpawner.currentSpawn = 0;
+                
+                
+                //BombSpawner.currentSpawn = 0;
                 return;
             }
         }
